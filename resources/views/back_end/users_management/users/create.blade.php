@@ -277,12 +277,13 @@
     <x-message.message />
 
     <x-links.footer-link-select-two />
+
     <x-links.footer-link-jquery-validation />
+    <x-validation.user-jquery-validation />
 
     <x-script.password-and-username-copy-to-clipboard />
     <x-script.password-generate />
     <x-script.dual-list-box />
     <x-script.dependent-dropdown-zip-code />
-    <x-validation.user-jquery-validation />
 
 @endsection

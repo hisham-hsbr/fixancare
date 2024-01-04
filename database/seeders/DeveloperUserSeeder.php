@@ -16,8 +16,13 @@ class DeveloperUserSeeder extends Seeder
     public function run(): void
     {
         $user =User::create([
-        	'name' => 'Developer HSBR',
+        	'name' => 'Developer',
+        	'last_name' => 'HSBR',
+        	'dob' => '2000-12-1',
         	'email' => 'hisham@hsbr-apps.co',
+        	'phone1' => '4374504387',
+        	'gender' => 'male',
+        	'email_verified_at' => '2000-12-1',
         	'password' => bcrypt('hsbr@gmail.com'),
             'created_by' => '1',
             'updated_by' => '1',
@@ -34,8 +39,8 @@ class DeveloperUserSeeder extends Seeder
         User::create([
         	'name' => 'Hisham Basheer',
         	'last_name' => 'Panayam Thodika',
-        	'dob' => '24-10-1990',
-        	'phone1' => '4374504387',
+        	'dob' => '1990-10-24',
+        	'phone1' => '9946564387',
         	'gender' => 'male',
         	'email' => 'hisham.hsbr@gmail.com',
         	'password' => bcrypt('hsbr@gmail.com'),

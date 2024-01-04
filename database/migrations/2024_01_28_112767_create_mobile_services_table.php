@@ -13,26 +13,32 @@ return new class extends Migration
     {
         Schema::create('mobile_services', function (Blueprint $table) {
             $table->id();
-            $table->string('job_number')->unique();
-            $table->string('imei');
             $table->date('date');
-            $table->string('contact_name')->nullable();
-            $table->string('contact_number')->nullable();
-            $table->text('contact_address')->nullable();
-
-            $table->unsignedBigInteger('brand_id')->unsigned()->index()->nullable();
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-
-            $table->unsignedBigInteger('mobile_complaint_id')->unsigned()->index()->nullable();
-            $table->foreign('mobile_complaint_id')->references('id')->on('mobile_complaints')->onDelete('cascade');
+            $table->string('job_number')->unique();
 
             $table->unsignedBigInteger('job_type_id')->unsigned()->index()->nullable();
             $table->foreign('job_type_id')->references('id')->on('job_types')->onDelete('cascade');
 
+            $table->string('contact_name')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->text('contact_address')->nullable();
+
+
+            $table->string('imei');
             $table->string('lock')->nullable();
+
+            $table->unsignedBigInteger('mobile_model_id')->unsigned()->index()->nullable();
+            $table->foreign('mobile_model_id')->references('id')->on('mobile_models')->onDelete('cascade');
+
+            $table->unsignedBigInteger('mobile_complaint_id')->unsigned()->index()->nullable();
+            $table->foreign('mobile_complaint_id')->references('id')->on('mobile_complaints')->onDelete('cascade');
+
             $table->text('complaint_details')->nullable();
             $table->text('work_details')->nullable();
             $table->date('delivered_at')->nullable();
+
+            $table->unsignedBigInteger('work_status_id')->unsigned()->index()->nullable();
+            $table->foreign('work_status_id')->references('id')->on('work_statuses')->onDelete('cascade');
 
             $table->unsignedBigInteger('job_status_id')->unsigned()->index()->nullable();
             $table->foreign('job_status_id')->references('id')->on('job_statuses')->onDelete('cascade');

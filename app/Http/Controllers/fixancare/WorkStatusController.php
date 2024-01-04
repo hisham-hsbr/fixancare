@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\fixancare;
 
-use App\Models\Fixancare\JobType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Fixancare\WorkStatus;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class JobTypeController extends Controller
+class WorkStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +24,8 @@ class JobTypeController extends Controller
 
     public function index()
     {
-        $jobTypes = JobType::all();
-        return view('folder.JobTypes.folder',compact('JobTypes'))->with('i');
+        $workStatuss = WorkStatus::all();
+        return view('folder.WorkStatuss.folder',compact('WorkStatuss'))->with('i');
     }
 
     /**
@@ -46,7 +47,7 @@ class JobTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobType $jobType)
+    public function show(WorkStatus $workStatus)
     {
         //
     }
@@ -54,7 +55,7 @@ class JobTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobType $jobType)
+    public function edit(WorkStatus $workStatus)
     {
         //
     }
@@ -62,7 +63,7 @@ class JobTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobType $jobType)
+    public function update(Request $request, WorkStatus $workStatus)
     {
         //
     }
@@ -70,7 +71,7 @@ class JobTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobType $jobType)
+    public function destroy(WorkStatus $workStatus)
     {
         //
     }

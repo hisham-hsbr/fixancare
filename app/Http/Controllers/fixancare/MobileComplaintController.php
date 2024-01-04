@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\fixancare;
 
-use App\Models\Fixancare\Brand;
+use App\Http\Controllers\Controller;
+use App\Models\Fixancare\MobileComplaint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
 
-class BrandController extends Controller
+class MobileComplaintController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +24,8 @@ class BrandController extends Controller
 
     public function index()
     {
-        $brands = Brand::all();
-        return view('folder.Brands.folder',compact('Brands'))->with('i');
+        $mobileComplaints = MobileComplaint::all();
+        return view('folder.MobileComplaints.folder',compact('MobileComplaints'))->with('i');
     }
 
     /**
@@ -46,7 +47,7 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Brand $brand)
+    public function show(MobileComplaint $mobileComplaint)
     {
         //
     }
@@ -54,7 +55,7 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Brand $brand)
+    public function edit(MobileComplaint $mobileComplaint)
     {
         //
     }
@@ -62,7 +63,7 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request, MobileComplaint $mobileComplaint)
     {
         //
     }
@@ -70,7 +71,7 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand)
+    public function destroy(MobileComplaint $mobileComplaint)
     {
         //
     }

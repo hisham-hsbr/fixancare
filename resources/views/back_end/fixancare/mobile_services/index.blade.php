@@ -52,37 +52,16 @@
                                                     <th>Sn</th>
                                                 @endcan
                                                 @can('Price List Read Code')
-                                                    <th>Code</th>
+                                                    <th>Date</th>
                                                 @endcan
-                                                @can('Price List Read Name')
-                                                    <th>Name</th>
+                                                @can('Price List Read Code')
+                                                    <th>Job Number</th>
                                                 @endcan
-                                                @can('Price List Read Group')
-                                                    <th>Group</th>
+                                                @can('Price List Read Code')
+                                                    <th>Job Type</th>
                                                 @endcan
-                                                @can('Price List Read Packing')
-                                                    <th>Packing</th>
-                                                @endcan
-                                                @can('Price List Read UOM')
-                                                    <th>UOM</th>
-                                                @endcan
-                                                @can('Price List Read Packet Price')
-                                                    <th>Packet Price</th>
-                                                @endcan
-                                                @can('Price List Read Half Packet Price')
-                                                    <th>Half Packet Price</th>
-                                                @endcan
-                                                @can('Price List Read Wholesale Price')
-                                                    <th>Wholesale Price</th>
-                                                @endcan
-                                                @can('Price List Read Cash Price')
-                                                    <th>Cash Price</th>
-                                                @endcan
-                                                @can('Price List Read Credit Price')
-                                                    <th>Credit Price</th>
-                                                @endcan
-                                                @can('Price List Read Description')
-                                                    <th>Description</th>
+                                                @can('Price List Read Code')
+                                                    <th>Job Status</th>
                                                 @endcan
                                                 @can('Price List Read Status')
                                                     <th>Status</th>
@@ -116,37 +95,16 @@
                                                     <th>Sn</th>
                                                 @endcan
                                                 @can('Price List Read Code')
-                                                    <th>Code</th>
+                                                    <th>Date</th>
                                                 @endcan
-                                                @can('Price List Read Name')
-                                                    <th>Name</th>
+                                                @can('Price List Read Code')
+                                                    <th>Job Number</th>
                                                 @endcan
-                                                @can('Price List Read Group')
-                                                    <th>Group</th>
+                                                @can('Price List Read Code')
+                                                    <th>Job Type</th>
                                                 @endcan
-                                                @can('Price List Read Packing')
-                                                    <th>Packing</th>
-                                                @endcan
-                                                @can('Price List Read UOM')
-                                                    <th>UOM</th>
-                                                @endcan
-                                                @can('Price List Read Packet Price')
-                                                    <th>Packet Price</th>
-                                                @endcan
-                                                @can('Price List Read Half Packet Price')
-                                                    <th>Half Packet Price</th>
-                                                @endcan
-                                                @can('Price List Read Wholesale Price')
-                                                    <th>Wholesale Price</th>
-                                                @endcan
-                                                @can('Price List Read Cash Price')
-                                                    <th>Cash Price</th>
-                                                @endcan
-                                                @can('Price List Read Credit Price')
-                                                    <th>Credit Price</th>
-                                                @endcan
-                                                @can('Price List Read Description')
-                                                    <th>Description</th>
+                                                @can('Price List Read Code')
+                                                    <th>Job Status</th>
                                                 @endcan
                                                 @can('Price List Read Status')
                                                     <th>Status</th>
@@ -253,8 +211,8 @@
                 scrollX: true,
                 scrollCollapse: true,
                 // lengthMenu: [
-                //     [10, 25, 50, 100, -1],
-                //     [10, 25, 50, 100, "All"]
+                //     [10, 25, 50, 100, 10, 25, 50, 100, 10, 25, 50, 100],
+                //     // [10, 25, 50, 100, "All"]
                 // ],
                 pagingType: "full_numbers",
                 processing: true,
@@ -272,79 +230,33 @@
                     @endcan
                     @can('Price List Read Code')
                         {
-                            data: 'code',
-                            name: 'code',
+                            data: 'date',
+                            name: 'date',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Price List Read Name')
+                    @can('Price List Read Code')
                         {
-                            data: 'name',
-                            name: 'name',
+                            data: 'job_number',
+                            name: 'job_number',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Price List Read Group')
+                    @can('Price List Read Code')
                         {
-                            data: 'group',
-                            name: 'group',
-                            defaultContent: '',
+                            data: 'jobType',
+                            name: 'jobType',
+                            defaultContent: ''
                         },
                     @endcan
-                    @can('Price List Read Packing')
+                    @can('Price List Read Code')
                         {
-                            data: 'packing',
-                            name: 'packing',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read UOM')
-                        {
-                            data: 'uom',
-                            name: 'uom',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read Packet Price')
-                        {
-                            data: 'packet_price',
-                            name: 'packet_price',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read Half Packet Price')
-                        {
-                            data: 'half_packet_price',
-                            name: 'half_packet_price',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read Wholesale Price')
-                        {
-                            data: 'wholesale_price',
-                            name: 'wholesale_price',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read Cash Price')
-                        {
-                            data: 'cash_price',
-                            name: 'cash_price',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read Credit Price')
-                        {
-                            data: 'credit_price',
-                            name: 'credit_price',
-                            defaultContent: '',
-                        },
-                    @endcan
-                    @can('Price List Read Description')
-                        {
-                            data: 'description',
-                            name: 'description',
-                            defaultContent: '',
+                            data: 'jobStatus',
+                            name: 'jobStatus',
+                            width: '200%',
+                            defaultContent: ''
                         },
                     @endcan
                     @can('Price List Read Status')
@@ -358,6 +270,7 @@
                         {
                             data: 'created_at',
                             name: 'created_at',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan

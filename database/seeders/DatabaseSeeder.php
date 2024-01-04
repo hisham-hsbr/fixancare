@@ -26,5 +26,11 @@ class DatabaseSeeder extends Seeder
         $this->call(TimeZoneSeeder::class);
         $this->call(BloodSeeder::class);
         $this->call(CountryStateDistrictCitySeeder::class);
+        $this->call(BrandSeeder::class);
+        $this->call(JobTypeSeeder::class);
+        $this->call(JobStatusSeeder::class);
+        $this->call(WorkStatusSeeder::class);
+        $this->call(MobileComplaintSeeder::class);
+        $this->call(MobileModelSeeder::class);
     }
 }

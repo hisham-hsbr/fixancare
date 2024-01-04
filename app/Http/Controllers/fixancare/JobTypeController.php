@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\fixancare;
 
-use App\Models\Fixancare\JobStatus;
+use App\Http\Controllers\Controller;
+use App\Models\Fixancare\JobType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
 
-class JobStatusController extends Controller
+class JobTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +24,8 @@ class JobStatusController extends Controller
 
     public function index()
     {
-        $jobStatuss = JobStatus::all();
-        return view('folder.JobStatuss.folder',compact('JobStatuss'))->with('i');
+        $jobTypes = JobType::all();
+        return view('folder.JobTypes.folder',compact('JobTypes'))->with('i');
     }
 
     /**
@@ -46,7 +47,7 @@ class JobStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobStatus $jobStatus)
+    public function show(JobType $jobType)
     {
         //
     }
@@ -54,7 +55,7 @@ class JobStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobStatus $jobStatus)
+    public function edit(JobType $jobType)
     {
         //
     }
@@ -62,7 +63,7 @@ class JobStatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobStatus $jobStatus)
+    public function update(Request $request, JobType $jobType)
     {
         //
     }
@@ -70,7 +71,7 @@ class JobStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobStatus $jobStatus)
+    public function destroy(JobType $jobType)
     {
         //
     }

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
 
-    //Permissions
+    //mobile services
     Route::controller('Fixancare\MobileServiceController')->prefix('/admin/fixancare/mobile-services')->name('mobile-services.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
@@ -13,10 +13,10 @@ Route::middleware('auth')->group(function () {
         Route::patch('/update/{id}', 'update')->name('update');
         Route::post('/store', 'store')->name('store');
         Route::delete('/destroy{id}', 'destroy')->name('destroy');
-        Route::get('/get', 'permissionsGet')->name('get');
-        Route::get('/import', 'permissionsImport')->name('import');
-        Route::post('/upload', 'permissionsUpload')->name('upload');
-        Route::get('/download', 'permissionsDownload')->name('download');
+        Route::get('/get', 'mobileServicesGet')->name('get');
+        Route::get('/import', 'mobileServicesImport')->name('import');
+        Route::post('/upload', 'mobileServicesUpload')->name('upload');
+        Route::get('/download', 'mobileServicesDownload')->name('download');
     });
 
 

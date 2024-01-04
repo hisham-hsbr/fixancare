@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\fixancare;
 
-use App\Models\Fixancare\MobileComplaint;
+use App\Http\Controllers\Controller;
+use App\Models\Fixancare\MobileModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class MobileComplaintController extends Controller
+class MobileModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +24,8 @@ class MobileComplaintController extends Controller
 
     public function index()
     {
-        $mobileComplaints = MobileComplaint::all();
-        return view('folder.MobileComplaints.folder',compact('MobileComplaints'))->with('i');
+        $mobileModels = MobileModel::all();
+        return view('folder.MobileModels.folder',compact('MobileModels'))->with('i');
     }
 
     /**
@@ -46,7 +47,7 @@ class MobileComplaintController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MobileComplaint $mobileComplaint)
+    public function show(MobileModel $mobileModel)
     {
         //
     }
@@ -54,7 +55,7 @@ class MobileComplaintController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MobileComplaint $mobileComplaint)
+    public function edit(MobileModel $mobileModel)
     {
         //
     }
@@ -62,7 +63,7 @@ class MobileComplaintController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MobileComplaint $mobileComplaint)
+    public function update(Request $request, MobileModel $mobileModel)
     {
         //
     }
@@ -70,7 +71,7 @@ class MobileComplaintController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MobileComplaint $mobileComplaint)
+    public function destroy(MobileModel $mobileModel)
     {
         //
     }

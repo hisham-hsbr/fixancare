@@ -36,7 +36,7 @@
                         class="text-primary me-3">Elegance</span>for<br />your web app</h1>
                 <p class="mb-5">Standard, modern and Elegant solution for your next web app so you don’t have to look
                     further. Sign up or check the demo below.</p><a class="btn btn-lg btn-primary rounded-pill me-3"
-                    href="#!" role="button">Sign up</a><a class="btn btn-link me-2 fs-0 p-0" href="#!"
+                    href="/tr" role="button">Track</a><a class="btn btn-link me-2 fs-0 p-0" href="#!"
                     role="button">Check Demo<span class="fa-solid fa-angle-right ms-2 fs--1"></span></a>
             </div>
         </div>

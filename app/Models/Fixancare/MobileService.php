@@ -56,8 +56,7 @@ class MobileService extends Model
     }
     public function mobileModel()
     {
-        return $this->belongsTo(
-            MobileModel::class,'mobile_model_id','id');
+        return $this->belongsTo(MobileModel::class,'mobile_model_id','id');
     }
     public function mobileComplaint()
     {

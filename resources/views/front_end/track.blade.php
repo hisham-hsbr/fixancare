@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SnTracker | Search</title>
+    <title>{{ $application->data['app_name'] }} Track details</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -60,7 +60,14 @@
     <!-- Automatic element centering -->
     <div class="lockscreen-wrapper">
         <div class="lockscreen-logo">
-            <a href=""><b>Sn</b>Tracker</a>
+            {{-- sign_mini_logo --}}
+            @if ($logo->data['sign_mini_logo'] == 1)
+                <x-app.application-logo-mini width="150" />
+            @endif
+            {{-- sign_logo --}}
+            @if ($logo->data['sign_logo'] == 1)
+                <x-app.application-logo-black width="265" />
+            @endif
         </div>
 
         @if ($errors->any())
@@ -77,17 +84,19 @@
 
         <table class="table table-bordered c">
             <tr>
-                <th>No</th>
-                <th width="1280px">Product Name</th>
-                <th width="480px">Purchase Date</th>
-                <th>SerialNumber</th>
+                <th>Job No</th>
+                <th width="1280px">Job type</th>
+                <th width="1280px">Model</th>
+                <th width="1280px">Work detail</th>
+                <th width="1280px">Job status</th>
             </tr>
             @foreach ($job_numbers as $job_number)
                 <tr>
-                    <td>{{ $job_number->id }}</td>
-                    <td>{{ $job_number->date }}</td>
+                    <td>{{ $job_number->job_number }}</td>
                     <td>{{ $job_number->jobType->name }}</td>
-                    <td>{{ $job_number->imei }}</td>
+                    <td width="1480px">{{ $job_number->mobileModel->name }}</td>
+                    <td>{{ $job_number->work_details }}</td>
+                    <td>{{ $job_number->jobStatus->name }}</td>
                 </tr>
             @endforeach
         </table>

@@ -33,8 +33,8 @@
                             <div class="row">
                                 <x-form.form-group-label-input div_class="col-sm-4" label_for="date" lable_class="required"
                                     label_name="Date" input_type="date" input_name="date" input_class=""
-                                    input_style="text-transform: uppercase" input_id="date" input_value="{{ old('date') }}"
-                                    input_placeholder="" />
+                                    input_style="text-transform: uppercase" input_id="date"
+                                    input_value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" input_placeholder="" />
                                 <x-form.form-group-label-input div_class="col-sm-4" label_for="job_number"
                                     lable_class="required" label_name="Job number" input_type="text" input_name="job_number"
                                     input_class="" input_style="text-transform: uppercase" input_id="job_number"

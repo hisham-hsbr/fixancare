@@ -28,6 +28,13 @@
                                 alt="hero-header" /><img class="pt-7 pt-md-0 w-100 shadow-lg d-light-none rounded-2"
                                 src="{{ asset('front_end_links/phoenix/public/assets/img/bg/bg-29.png') }}"
                                 alt="hero-header" /></div>
+                        {{-- <div class="position-absolute h-100 top-0 d-flex align-items-center end-0"><img
+                                class="pt-7 pt-md-0 w-100 shadow-lg d-dark-none rounded-2"
+                                src="{{ asset('/storage/images/fixancare/home.jpg') }}" alt="hero-header" /><img
+                                class="pt-7 pt-md-0 w-100 shadow-lg d-light-none rounded-2"
+                                src="{{ asset('/storage/images/fixancare/home.jpg') }}" alt="hero-header" /></div> --}}
+
+
                     </div>
                 </div>
             </div>

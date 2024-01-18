@@ -2,9 +2,17 @@
     <nav class="navbar navbar-expand-lg container-small px-3 px-lg-7 px-xxl-3"><a
             class="navbar-brand flex-1 flex-lg-grow-0" href="/">
             <div class="d-flex align-items-center">
-                {{-- <x-app.application-logo-mini width="27" /> --}}
+                {{-- sidebar_mini_logo --}}
+                @if ($logo->data['sidebar_mini_logo'] == 1)
+                    <x-app.application-logo-mini width="47" />
+                @endif
+                <div style="padding-left: 20px">
 
-                <x-app.application-logo-black width="265" />
+                </div>
+                {{-- sidebar_logo --}}
+                @if ($logo->data['sidebar_logo'] == 1)
+                    <x-app.application-logo-black width="265" />
+                @endif
 
             </div>
         </a>

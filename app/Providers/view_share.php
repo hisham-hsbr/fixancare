@@ -15,3 +15,5 @@ view()->share('logo', DeveloperSettings::firstWhere('name', 'logo'));
 // App Settings view
 view()->share('default_layout', AppSettings::firstWhere('name', 'default layout'));
 view()->share('default_action', AppSettings::firstWhere('name', 'default action'));
+view()->share('default_message', AppSettings::firstWhere('name', 'default message'));
+view()->share('default_front_end_layout', AppSettings::firstWhere('name', 'default front end layout'));

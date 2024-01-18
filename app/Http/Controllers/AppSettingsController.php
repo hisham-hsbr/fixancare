@@ -86,6 +86,24 @@ class AppSettingsController extends Controller
         $logo->updated_by = Auth::user()->id;
         $logo->save();
 
+        //Logo Settings
+        $default_front_end_layout = AppSettings::firstWhere('name', 'default front end layout');
+        $default_front_end_layout->data= [
+            'home_carousel_section'=>$request->home_carousel_section,
+            'about_section'=>$request->about_section,
+            'features_section'=>$request->features_section,
+            'call_to_action_section'=>$request->call_to_action_section,
+            'services_section'=>$request->services_section,
+            'portfolio_section'=>$request->portfolio_section,
+            'testimonials_section'=>$request->testimonials_section,
+            'pricing_section'=>$request->pricing_section,
+            'faq_section'=>$request->faq_section,
+            'team_section'=>$request->team_section,
+            'contact_section'=>$request->contact_section,
+        ];
+        $default_front_end_layout->updated_by = Auth::user()->id;
+        $default_front_end_layout->save();
+
 
 
         return redirect()->route('app-settings.index')

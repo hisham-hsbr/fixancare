@@ -29,5 +29,28 @@ class AppSettingsSeeder extends Seeder
                 'default_time_zone'=>1,
             ],
             'description' => 'app des' ,'parent'=>'layout', 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        AppSettings::create([
+            'name' => 'default message' ,
+            'data'=>[
+                'home_toolbar_message'=>'hai welcome to my app',
+                'message'=>'test',
+            ],
+            'description' => 'app des' ,'parent'=>'message', 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        AppSettings::create([
+            'name' => 'default front end layout' ,
+            'data'=>[
+                'home_carousel_section'=>1,
+                'about_section'=>1,
+                'features_section'=>1,
+                'call_to_action_section'=>1,
+                'services_section'=>1,
+                'portfolio_section'=>1,
+                'testimonials_section'=>1,
+                'pricing_section'=>1,
+                'faq_section'=>1,
+                'team_section'=>1,
+                'contact_section'=>1,
+            ],
+            'description' => 'app des' ,'parent'=>'message', 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
     }
 }

@@ -20,6 +20,10 @@
                 </div>
             </div>
             <div class="col-6 col-md-3">
+                <div class="p-2 p-lg-5 d-flex flex-center h-100 border-1 border-dashed border-bottom border-end"><img
+                        class="w-100" src="{{ asset('/storage/images/app/logo_black.png') }}" alt="" /></div>
+            </div>
+            <div class="col-6 col-md-3">
                 <div class="p-2 p-lg-5 d-flex flex-center h-100 border-1 border-dashed border-bottom border-end-lg-0">
                     <img class="w-100"
                         src="{{ asset('front_end_links/phoenix/public/assets/img/brand2/facebook-f.png') }}"

@@ -138,6 +138,73 @@
                                     </option>
                                 </x-form.form-group-label-select>
                             </div>
+                            <div class="row">
+                                <x-form.form-heading name="Frontend settings" />
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="home_carousel_section"
+                                        value="1" id="home_carousel_section"
+                                        @if ($default_front_end_layout->data['home_carousel_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label"
+                                        for="home_carousel_section">home_carousel_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="about_section" value="1"
+                                        id="about_section" @if ($default_front_end_layout->data['about_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="about_section">about_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="features_section" value="1"
+                                        id="features_section"
+                                        @if ($default_front_end_layout->data['features_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="features_section">features_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="call_to_action_section"
+                                        value="1" id="call_to_action_section"
+                                        @if ($default_front_end_layout->data['call_to_action_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label"
+                                        for="call_to_action_section">call_to_action_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="services_section" value="1"
+                                        id="services_section"
+                                        @if ($default_front_end_layout->data['services_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="services_section">services_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="portfolio_section" value="1"
+                                        id="portfolio_section"
+                                        @if ($default_front_end_layout->data['portfolio_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="portfolio_section">portfolio_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="testimonials_section"
+                                        value="1" id="testimonials_section"
+                                        @if ($default_front_end_layout->data['testimonials_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label"
+                                        for="testimonials_section">testimonials_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="pricing_section" value="1"
+                                        id="pricing_section" @if ($default_front_end_layout->data['pricing_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="pricing_section">pricing_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="faq_section" value="1"
+                                        id="faq_section" @if ($default_front_end_layout->data['faq_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="faq_section">faq_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="team_section" value="1"
+                                        id="team_section" @if ($default_front_end_layout->data['team_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="team_section">team_section(Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="contact_section" value="1"
+                                        id="contact_section" @if ($default_front_end_layout->data['contact_section'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="contact_section">contact_section(Enable)</label>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="">

@@ -4,8 +4,8 @@
 
 @section('PageTitle', 'User Create')
 @section('pageNavHeader')
-    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">permissions</a></li>
     <li class="breadcrumb-item active">Create</li>
 @endsection
 

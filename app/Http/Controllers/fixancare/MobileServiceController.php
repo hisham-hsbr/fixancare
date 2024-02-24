@@ -39,18 +39,20 @@ class MobileServiceController extends Controller
     public function create()
     {
         $mobile_services = MobileService::all();
+        $job_number = MobileService::max('job_number')+1;
         $mobile_models = MobileModel::all();
         $job_types = JobType::all();
         $job_statuses = JobStatus::all();
         $work_statuses = WorkStatus::all();
         $mobile_complaints = MobileComplaint::all();
-        return view('back_end.fixancare.mobile_services.create',compact('mobile_services','mobile_models','job_types','job_statuses','work_statuses','mobile_complaints'));
+        return view('back_end.fixancare.mobile_services.create',compact('mobile_services','mobile_models','job_types','job_statuses','work_statuses','mobile_complaints','job_number'));
     }
 
     public function mobileServicesGet()
     {
 
         $mobile_services = MobileService::all();
+        // $mobile_services = MobileService::orderBy('job_number', 'DESC');
         return Datatables::of($mobile_services)
 
         ->setRowId(function ($mobile_service) {
@@ -75,6 +77,9 @@ class MobileServiceController extends Controller
 
         ->addColumn('date', function (MobileService $mobile_service) {
             return $mobile_service->date->format('d-M-Y');
+        })
+        ->addColumn('jobNumber', function (MobileService $mobile_service) {
+            return "F-".$mobile_service->job_number;
         })
 
         ->editColumn('jobStatus', function (MobileService $mobile_service) {
@@ -105,18 +110,10 @@ class MobileServiceController extends Controller
 
             return ucwords($mobile_service->job_status_id->name);
         })
-        ->editColumn('created_by', function (MobileService $mobile_service) {
-
-            return ucwords($mobile_service->CreatedBy->name);
-        })
         ->editColumn('jobType', function (MobileService $mobile_service) {
 
             return ucwords($mobile_service->jobType->name);
         })
-        // ->editColumn('jobStatus', function (MobileService $mobile_service) {
-
-        //     return ucwords($mobile_service->jobStatus->name);
-        // })
         ->editColumn('workStatus', function (MobileService $mobile_service) {
 
             return ucwords($mobile_service->workStatus->name);
@@ -129,7 +126,18 @@ class MobileServiceController extends Controller
 
             return ucwords($mobile_service->mobileComplaint->name);
         })
+        ->editColumn('mobileModel', function (MobileService $mobile_service) {
 
+            return ucwords($mobile_service->MobileModel->name);
+        })
+
+
+        // ----------
+
+        ->editColumn('created_by', function (MobileService $mobile_service) {
+
+            return ucwords($mobile_service->CreatedBy->name);
+        })
 
         ->editColumn('updated_by', function (MobileService $mobile_service) {
 
@@ -169,7 +177,7 @@ class MobileServiceController extends Controller
     {
         $this->validate($request, [
             'date' => 'required',
-            'job_number' => 'required|unique:mobile_services,job_number',
+            // 'job_number_trim' => 'required|unique:mobile_services,job_number',
             'job_type_id' => 'required',
             'contact_name' => 'required',
             'contact_number' => 'required',
@@ -188,9 +196,11 @@ class MobileServiceController extends Controller
 
         $mobile_services = new MobileService();
 
+        $job_number = $request->job_number;
+        $job_number_trim = substr($job_number, 2);
 
         $mobile_services->date = $request->date;
-        $mobile_services->job_number = $request->job_number;
+        $mobile_services->job_number = $job_number_trim;
         $mobile_services->job_type_id = $request->job_type_id;
         $mobile_services->contact_name = $request->contact_name;
         $mobile_services->contact_number = $request->contact_number;
@@ -236,17 +246,81 @@ class MobileServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MobileService $mobileService)
+    public function edit($id)
     {
-        //
+        $mobile_services = MobileService::find($id);
+        $mobile_models = MobileModel::all();
+        $job_types = JobType::all();
+        $job_statuses = JobStatus::all();
+        $work_statuses = WorkStatus::all();
+        $mobile_complaints = MobileComplaint::all();
+        return view('back_end.fixancare.mobile_services.edit',compact('mobile_services','mobile_models','job_types','job_statuses','work_statuses','mobile_complaints'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MobileService $mobileService)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'date' => 'required',
+            // 'job_number_trim' => 'required|unique:mobile_services,job_number',
+            'job_number' => "required|unique:mobile_services,job_number,$id",
+            'job_type_id' => 'required',
+            'contact_name' => 'required',
+            'contact_number' => 'required',
+            'contact_address' => 'required',
+            'imei' => 'required',
+            'lock' => 'required',
+            'mobile_model_id' => 'required',
+            'mobile_complaint_id' => 'required',
+            'job_status_id' => 'required',
+            'work_status_id' => 'required',
+            'payment' => 'required',
+            'advance' => 'required',
+            'balance' => 'required',
+        ]);
+
+
+        $mobile_services = MobileService::find($id);
+
+        $job_number = $request->job_number;
+        $job_number_trim = substr($job_number, 2);
+
+        $mobile_services->date = $request->date;
+        $mobile_services->job_number = $job_number_trim;
+        $mobile_services->job_type_id = $request->job_type_id;
+        $mobile_services->contact_name = $request->contact_name;
+        $mobile_services->contact_number = $request->contact_number;
+        $mobile_services->contact_address = $request->contact_address;
+        $mobile_services->imei = $request->imei;
+        $mobile_services->lock = $request->lock;
+        $mobile_services->mobile_model_id = $request->mobile_model_id;
+        $mobile_services->mobile_complaint_id = $request->mobile_complaint_id;
+        $mobile_services->complaint_details = $request->complaint_details;
+        $mobile_services->work_details = $request->work_details;
+        $mobile_services->delivered_at = $request->delivered_at;
+        $mobile_services->job_status_id = $request->job_status_id;
+        $mobile_services->work_status_id = $request->work_status_id;
+        $mobile_services->payment = $request->payment;
+        $mobile_services->advance = $request->advance;
+        $mobile_services->balance = $request->balance;
+        $mobile_services->description = $request->description;
+
+        if ($request->status==0)
+            {
+                $mobile_services->status==0;
+            }
+
+        $mobile_services->status = $request->status;
+
+
+        $mobile_services->updated_by = Auth::User()->id;
+
+        $mobile_services->save();
+
+        return redirect()->route('mobile-services.index')
+                        ->with('message_store', 'mobile services Updated successfully');
     }
 
     /**

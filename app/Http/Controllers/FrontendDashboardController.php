@@ -13,20 +13,34 @@ class FrontendDashboardController extends Controller
     //     $this->middleware('auth');
 
     // }
-    public function track()
+    public function trackSearchJob()
     {
 
-        $track_test = $_GET['query'];
+        $track_test = $_GET['job_number'];
 
          $job_numbers = MobileService::where('job_number','LIKE',$track_test)->get();
-        //  $job_numbers = job_number::where('job_number','LIKE','%'.$track_test.'%')->get();
          if ($track_test == "") {
 
-          return view('welcome')->with('message_store', 'Brand Created Successfully');
+          return view('front_end.tr');
             }
             else {
           return view('front_end.track',compact('job_numbers'));
 
+        }
     }
+    public function trackSearchPhone()
+    {
+
+        $track_test = $_GET['phone_number'];
+
+         $phone_numbers = MobileService::where('contact_number','LIKE',$track_test)->get();
+         if ($track_test == "") {
+
+          return view('front_end.tr');
+            }
+            else {
+          return view('front_end.track',compact('phone_numbers'));
+
+        }
     }
 }

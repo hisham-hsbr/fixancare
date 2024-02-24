@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ $application->data['app_name'] }} Track</title>
+    <!-- Favicons -->
+    <x-app.application-favicon />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,69 +41,81 @@
             @endif
         </div>
         <!-- User name -->
-        <div class="lockscreen-name">Search</div>
 
-        <!-- START LOCK SCREEN ITEM -->
-        <!--<div class="lockscreen-item">-->
-        <!-- lockscreen image -->
-        <!--  <div class="lockscreen-image">-->
-        <!--    <img src="{{ asset('back_end_links/adminLinks/dist/img/user1-128x128.jpg') }}" alt="User Image">-->
-
-        <!--  </div>-->
-        <!-- /.lockscreen-image -->
-
-        <!-- lockscreen credentials (contains the form) -->
-        <!--  <form class="lockscreen-credentials">-->
-        <!--    <div class="input-group">-->
-        <!--      <input type="password" class="form-control" placeholder="password">-->
-
-        <!--      <div class="input-group-append">-->
-        <!--        <button type="button" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>-->
-        <!--      </div>-->
-        <!--    </div>-->
-        <!--  </form>-->
-        <!-- /.lockscreen credentials -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <!--</div>-->
-        <!-- /.lockscreen-item -->
         <div class="input-group">
-            <!--<form class="lockscreen-credentials" action="/home" method="GET">-->
-            <form class="lockscreen-credentials" action="{{ url('/track') }}" method="GET">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="query" placeholder="Enter job number">
+            <label for="type" class="form-label">Search By</label>
+            <div class="col-sm-9">
+                <select class="form-select" id="type" onchange="showOrHide()" name="type">
+                    <option selected value="job_number">Job Number</option>
+                    <option value="phone_number">Phone Number</option>
+                </select>
+            </div>
+        </div>
 
-                    <div class="input-group-append">
-                        <button type="submit" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>
-                        <!--<button type="button" onclick="myFunction()" name="search" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>-->
+
+        <div id="jobNumberShow" style="visibility:visible">
+            <div class="lockscreen-name"></div>
+
+            <!-- /.lockscreen-item -->
+            <div class="input-group">
+                <!--<form class="lockscreen-credentials" action="/home" method="GET">-->
+                <form class="lockscreen-credentials" action="{{ url('/track-job-number') }}" method="GET">
+                    <div class="input-group">
+                        <span class="input-group-text">F-</span>
+                        <input type="number" class="form-control" name="job_number" placeholder="Enter job number">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-        <div class="help-block text-center">
-            <!--Enter your password to retrieve your session -->
+        <div id="phoneNumberShow" style="visibility:hidden">
+            <div class="lockscreen-name"></div>
+
+            <!-- /.lockscreen-item -->
+            <div class="input-group">
+                <!--<form class="lockscreen-credentials" action="/home" method="GET">-->
+                <form class="lockscreen-credentials" action="{{ url('/track-phone-number') }}" method="GET">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="phone_number" placeholder="Phone number">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="text-center">
-            <!-- <a href="login.html">Or sign in as a different user</a> -->
-        </div>
+        <br>
+        <br>
+        <br>
         <div class="lockscreen-footer text-center">
-            Copyright &copy; 2021 <b><a href="http://www.hsbr-apps.com/" class="text-black">hsbr-apps</a></b><br>
-            All rights reserved
+            <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> <a href="https://www.hsbr-apps.co/"
+                    target="_blank">HSBR-Apps</a>.</strong>
+            All rights reserved.
         </div>
     </div>
     <!-- /.center -->
 
+    <x-message.message />
+
     <script>
         function myFunction() {
             alert("I am an alert box!");
+        }
+    </script>
+
+    <script>
+        function showOrHide() {
+            var status = document.getElementById("type");
+
+            if (status.value == "phone_number") {
+                document.getElementById("phoneNumberShow").style.visibility = "visible";
+                document.getElementById("jobNumberShow").style.visibility = "hidden";
+            } else {
+                document.getElementById("phoneNumberShow").style.visibility = "hidden";
+                document.getElementById("jobNumberShow").style.visibility = "visible";
+            }
         }
     </script>
 

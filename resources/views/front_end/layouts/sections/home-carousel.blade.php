@@ -3,41 +3,43 @@
     <!-- Slide 1 -->
     <div class="carousel-item active">
         <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Hsbr</span></h2>
-            {{-- <p class="animate__animated fanimate__adeInUp">Ut velit est quam dolor ad a aliquid qui aliquid.
-                Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut.
-                Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore
-                modi architecto.</p> --}}
-            <img src="{{ asset('/storage/images/app/favicon.png') }}" alt="" srcset="" height="50">
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            <h2 class="animate__animated animate__fadeInDown">Welcome to <a href="index.html"><img
+                        src="{{ asset('/storage/images/app/logo_white.png') }}" alt="" width="187"
+                        height="20" class="img-fluid"></a></h2>
+            <p class="animate__animated fanimate__adeInUp"></p>
+            {{-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> --}}
         </div>
     </div>
 
     <!-- Slide 2 -->
+    @foreach ($images as $image)
+        @if ($image->type == 'carousel')
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <img src="{{ asset('/storage/' . $image->url) }}" alt="" width="1050" height="280">
+                    {{-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> --}}
+                </div>
+            </div>
+        @endif
+    @endforeach
+    {{-- <!-- Slide 3 -->
     <div class="carousel-item">
         <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-            {{-- <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid.
-                Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut.
-                Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore
-                modi architecto.</p> --}}
-            <img src="{{ asset('/storage/images/fixancare/home.jpg') }}" alt="" width="1050">
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-        </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="carousel-item">
-        <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid.
-                Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut.
-                Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore
-                modi architecto.</p>
+            <img src="{{ asset('/storage/images/fixancare/carousel/c2.jpg') }}" alt="f1" width="1030"
+                height="">>
             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
                 More</a>
         </div>
     </div>
+    <!-- Slide 4 -->
+    <div class="carousel-item">
+        <div class="carousel-container">
+            <img src="{{ asset('/storage/images/fixancare/carousel/c3.png') }}" alt="f1" width="1030"
+                height="280">>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
+                More</a>
+        </div>
+    </div> --}}
 
     <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>

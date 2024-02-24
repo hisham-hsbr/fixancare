@@ -30,10 +30,14 @@ class MobileModel extends Model
 
     public function createdBy()
     {
-        return $this->belongsTo(User::class,'created_by','id');
+        return $this->belongsTo('App\Models\User','created_by','id');
     }
     public function updatedBy()
     {
-        return $this->belongsTo(User::class,'updated_by','id');
+        return $this->belongsTo('App\Models\User','updated_by','id');
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class,'brand_id','id');
     }
 }

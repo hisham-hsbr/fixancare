@@ -62,4 +62,12 @@ class MobileService extends Model
     {
         return $this->belongsTo(MobileComplaint::class,'mobile_complaint_id','id');
     }
+
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     static::creating(function($model){
+    //         $model->number=MobileService::where('')
+    //     })
+    // }
 }

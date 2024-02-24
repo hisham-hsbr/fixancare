@@ -3,9 +3,10 @@
 namespace App\Models\Fixancare;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Fixancare\Brand;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class JobType extends Model
 {
@@ -30,10 +31,10 @@ class JobType extends Model
 
     public function createdBy()
     {
-        return $this->belongsTo(User::class,'created_by','id');
+        return $this->belongsTo('App\Models\User','created_by','id');
     }
     public function updatedBy()
     {
-        return $this->belongsTo(User::class,'updated_by','id');
+        return $this->belongsTo('App\Models\User','updated_by','id');
     }
 }

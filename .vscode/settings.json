@@ -1,7 +1,4 @@
 {
-    "cSpell.words": [
-        "csdc",
-        "csdcs",
-        "Datatables"
-    ]
+    "cSpell.words": ["csdc", "csdcs", "Datatables", "putFileAs"],
+    "cSpell.ignoreWords": ["putFileAs"]
 }

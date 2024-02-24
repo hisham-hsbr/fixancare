@@ -7,147 +7,176 @@
 
     <ul id="portfolio-flters" class="d-flex justify-content-end" data-aos="fade-up">
         <li data-filter="*" class="filter-active">All</li>
-        <li data-filter=".filter-app">App</li>
-        <li data-filter=".filter-card">Card</li>
-        <li data-filter=".filter-web">Web</li>
+        @foreach ($images_portfolio as $key => $value)
+            <li data-filter=".filter-{{ $key }}">{{ $key }}</li>
+        @endforeach
     </ul>
 
     <div class="row portfolio-container" data-aos="fade-up">
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-1.jpg') }}" class="img-fluid"
-                    alt=""></div>
+        @foreach ($images as $image)
+            @if ($image->type == 'portfolio')
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $image->group }}">
+                    <div class="portfolio-img"><img src="{{ asset('/storage/' . $image->url) }}" class="img-fluid"
+                            alt="portfolio"></div>
+                    <div class="portfolio-info">
+                        <h4>{{ $image->title }}</h4>
+                        <p>{{ $image->group }}</p>
+                        <a href="{{ asset('/storage/' . $image->url) }}" data-gallery="portfolioGallery"
+                            class="portfolio-lightbox preview-link" title="Samsung Finance"><i
+                                class="bx bx-plus"></i></a>
+                        {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+                    </div>
+                </div>
+            @endif
+        @endforeach
+        <!--
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad2.png') }}"
+                    class="img-fluid" alt="portfolio"></div>
             <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-1.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad2.png') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad3.png') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad3.png') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad4.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad4.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad5.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad5.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad6.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad6.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad7.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad7.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad8.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad8.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad9.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad9.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad10.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad10.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad11.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad11.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-ad">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/ad12.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Finance</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/ad12.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Finance"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-shop">
+            <div class="portfolio-img"><img src="{{ asset('/storage/images/fixancare/portfolio/di1.jpg') }}"
+                    class="img-fluid" alt="portfolio"></div>
+            <div class="portfolio-info">
+                <h4>Shop</h4>
+                <p>Ads</p>
+                <a href="{{ asset('/storage/images/fixancare/portfolio/di1.jpg') }}" data-gallery="portfolioGallery"
+                    class="portfolio-lightbox preview-link" title="Shop"><i class="bx bx-plus"></i></a>
+                {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                        class="bx bx-link"></i></a> --}}
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-2.jpg') }}" class="img-fluid"
-                    alt=""></div>
-            <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-2.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-3.jpg') }}" class="img-fluid"
-                    alt=""></div>
-            <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-3.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-4.jpg') }}" class="img-fluid"
-                    alt=""></div>
-            <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-4.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-5.jpg') }}" class="img-fluid"
-                    alt=""></div>
-            <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-5.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-6.jpg') }}" class="img-fluid"
-                    alt=""></div>
-            <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-6.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-7.jpg') }}"
-                    class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-7.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-8.jpg') }}"
-                    class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-8.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img
-                    src="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-9.jpg') }}"
-                    class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <a href="{{ asset('front_end_links/selecao/assets/img/portfolio/portfolio-9.jpg') }}"
-                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i
-                        class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                        class="bx bx-link"></i></a>
-            </div>
-        </div>
+    -->
 
     </div>
 

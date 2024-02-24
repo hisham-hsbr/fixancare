@@ -35,10 +35,18 @@
                                     label_name="Date" input_type="date" input_name="date" input_class=""
                                     input_style="text-transform: uppercase" input_id="date"
                                     input_value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" input_placeholder="" />
-                                <x-form.form-group-label-input div_class="col-sm-4" label_for="job_number"
+
+                                <div class="form-group col-sm-3">
+                                    <label for="job_number" class="required col-form-label">Job number</label>
+                                    <input type="text" name="job_number" id="job_number" style="text-transform: uppercase"
+                                        class="form-control" value="F-{{ $job_number }}" readonly>
+                                </div>
+
+                                {{-- <x-form.form-group-label-input div_class="col-sm-3" label_for="job_number"
                                     lable_class="required" label_name="Job number" input_type="text" input_name="job_number"
                                     input_class="" input_style="text-transform: uppercase" input_id="job_number"
-                                    input_value="{{ old('job_number') }}" input_placeholder="Enter job number" />
+                                    input_value="F-{{ $job_number }}" input_placeholder="Enter job number" /> --}}
+
                                 <x-form.form-group-label-select div_class="col-sm-4" label_for="job_type_id"
                                     lable_class="required" label_name="Job type" select_class="select2"
                                     select_name="job_type_id" select_id="job_type_id">
@@ -164,10 +172,16 @@
                                     input_name="advance" input_class="" input_style="text-transform: uppercase"
                                     input_id="advance" input_value="{{ old('advance') }}" input_placeholder="0.00" />
 
-                                <x-form.form-group-label-input div_class="col-sm-2" label_for="balance"
+                                {{-- <x-form.form-group-label-input div_class="col-sm-2" label_for="balance"
                                     lable_class="required" label_name="Balance payment" input_type="number"
                                     input_name="balance" input_class="" input_style="text-transform: uppercase"
-                                    input_id="balance" input_value="{{ old('balance') }}" input_placeholder="0.00" />
+                                    input_id="balance" input_value="{{ old('balance') }}" input_placeholder="0.00" /> --}}
+
+                                <div class="form-group col-sm-2">
+                                    <label for="balance" class="required col-form-label">Balance payment</label>
+                                    <input type="text" name="balance" id="balance" style="text-transform: uppercase"
+                                        class="form-control" value="{{ old('balance') }}" placeholder="0.00" readonly>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">
@@ -218,7 +232,35 @@
 @section('actionFooter', 'Footer')
 @section('footerLinks')
 
+    {{-- <script src="jquery-3.5.0.min.js"></script> --}}
+    <script>
+        $(document).ready(function() {
+            // Get value on keyup funtion
+            $("#payment").change(function() {
 
+                var balance = 0;
+                var payment = Number($("#payment").val());
+                var advance = Number($("#advance").val());
+
+                var balance = payment - advance;
+                $('#balance').val(balance);
+
+            });
+        });
+        $(document).ready(function() {
+            // Get value on keyup funtion
+            $("#advance").change(function() {
+
+                var balance = 0;
+                var payment = Number($("#payment").val());
+                var advance = Number($("#advance").val());
+
+                var balance = payment - advance;
+                $('#balance').val(balance);
+
+            });
+        });
+    </script>
 
     <x-message.message />
     <x-links.footer-link-select-two />

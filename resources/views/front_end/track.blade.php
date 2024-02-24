@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ $application->data['app_name'] }} Track details</title>
+    <!-- Favicons -->
+    <x-app.application-favicon />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -58,63 +60,94 @@
 
 <body class="hold-transition lockscreen">
     <!-- Automatic element centering -->
-    <div class="lockscreen-wrapper">
-        <div class="lockscreen-logo">
-            {{-- sign_mini_logo --}}
-            @if ($logo->data['sign_mini_logo'] == 1)
-                <x-app.application-logo-mini width="150" />
-            @endif
-            {{-- sign_logo --}}
-            @if ($logo->data['sign_logo'] == 1)
-                <x-app.application-logo-black width="265" />
-            @endif
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <br>
+                <br>
+                <div class="lockscreen-logo">
+                    {{-- sign_mini_logo --}}
+                    @if ($logo->data['sign_mini_logo'] == 1)
+                        <x-app.application-logo-mini width="150" />
+                    @endif
+                    {{-- sign_logo --}}
+                    @if ($logo->data['sign_logo'] == 1)
+                        <x-app.application-logo-black width="265" />
+                    @endif
+                </div>
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Job No</th>
+                                <th scope="col">Job type</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Work detail</th>
+                                <th scope="col">Job status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @isset($job_numbers)
+                                @foreach ($job_numbers as $job_number)
+                                    <tr>
+                                        <th scope="row">{{ $job_number->job_number }}</th>
+                                        <td>{{ $job_number->jobType->name }}</td>
+                                        <td>{{ $job_number->mobileModel->name }}</td>
+                                        <td>{{ $job_number->work_details }}</td>
+                                        <td>{{ $job_number->jobStatus->name }}</td>
+                                    </tr>
+                                @endforeach
+                            @endisset
+                            @isset($phone_numbers)
+                                @foreach ($phone_numbers as $phone_number)
+                                    <tr>
+                                        <th scope="row">{{ $phone_number->job_number }}</th>
+                                        <td>{{ $phone_number->jobType->name }}</td>
+                                        <td>{{ $phone_number->mobileModel->name }}</td>
+                                        <td>{{ $phone_number->work_details }}</td>
+                                        <td>{{ $phone_number->jobStatus->name }}</td>
+                                    </tr>
+                                @endforeach
+                            @endisset
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+                <a type="button" href="/" class="btn btn-info">Back</a>
+
+
+                <div class="help-block text-center">
+                    <!--Enter your password to retrieve your session -->
+                </div>
+                <div class="text-center">
+                    <!-- <a href="login.html">Or sign in as a different user</a> -->
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="lockscreen-footer text-center">
+                    <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> <a href="https://www.hsbr-apps.co/"
+                            target="_blank">HSBR-Apps</a>.</strong>
+                    All rights reserved.
+                </div>
             </div>
-        @endif
-
-
-        <table class="table table-bordered c">
-            <tr>
-                <th>Job No</th>
-                <th width="1280px">Job type</th>
-                <th width="1280px">Model</th>
-                <th width="1280px">Work detail</th>
-                <th width="1280px">Job status</th>
-            </tr>
-            @foreach ($job_numbers as $job_number)
-                <tr>
-                    <td>{{ $job_number->job_number }}</td>
-                    <td>{{ $job_number->jobType->name }}</td>
-                    <td width="1480px">{{ $job_number->mobileModel->name }}</td>
-                    <td>{{ $job_number->work_details }}</td>
-                    <td>{{ $job_number->jobStatus->name }}</td>
-                </tr>
-            @endforeach
-        </table>
-
-
-
-        <a type="button" href="/" class="btn btn-info">Back</a>
-
-
-        <div class="help-block text-center">
-            <!--Enter your password to retrieve your session -->
-        </div>
-        <div class="text-center">
-            <!-- <a href="login.html">Or sign in as a different user</a> -->
-        </div>
-        <div class="lockscreen-footer text-center">
-            Copyright &copy; 2021 <b><a href="http://www.hsbr-apps.com/" class="text-black">hsbr-apps</a></b><br>
-            All rights reserved
+            <div class="col-2"></div>
         </div>
     </div>
     <!-- /.center -->

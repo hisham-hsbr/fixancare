@@ -167,6 +167,27 @@
                                 menu_open="" active="{{ request()->is('admin/fixancare/mobile-service*') ? 'active' : '' }}"
                                 menu_icon="fa fa-mobile" drop_icon="" />
                         @endcan {{-- Mobile Service Menu End --}}
+                        {{-- Mobile Service Menu Start --}}
+                        @can('Job Type Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Job Type" href="{{ route('job-types.index') }}"
+                                menu_open="" active="{{ request()->is('admin/fixancare/job-type*') ? 'active' : '' }}"
+                                menu_icon="fa fa-mobile" drop_icon="" />
+                        @endcan {{-- Job Type Menu End --}}
+                        @can('Mobile Model Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Mobile Model" href="{{ route('mobile-models.index') }}"
+                                menu_open="" active="{{ request()->is('admin/fixancare/mobile-model*') ? 'active' : '' }}"
+                                menu_icon="fa fa-mobile" drop_icon="" />
+                        @endcan {{-- Mobile Model Menu End --}}
+                        @can('Brand Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Brand" href="{{ route('brands.index') }}" menu_open=""
+                                active="{{ request()->is('admin/fixancare/brand*') ? 'active' : '' }}" menu_icon="fa fa-mobile"
+                                drop_icon="" />
+                        @endcan {{-- Brand Menu End --}}
+                        @can('Image Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Image Controler" href="{{ route('images.index') }}"
+                                menu_open="" active="{{ request()->is('admin/fixancare/image*') ? 'active' : '' }}"
+                                menu_icon="fa fa-mobile" drop_icon="" />
+                        @endcan {{-- Image Menu End --}}
                     </x-sidebar.sidebar-nav-level>
                 @endcanany {{-- Users Management Menu --}}
             @endcanany {{-- Admin Aection Menu --}}

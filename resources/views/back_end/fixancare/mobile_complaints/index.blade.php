@@ -5,7 +5,7 @@
 @section('PageTitle', 'Mobile Complaint Index')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('mobile-complaints.index') }}">Mobile Complaints</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('mobile-complaints.index') }}">Mobile Complaint</a></li>
     <li class="breadcrumb-item active">Index</li>
 @endsection
 
@@ -38,17 +38,17 @@
                                         <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-default btn-sm"
                                             href="" button_icon="fa fa-cog" button_name="Settings" />
                                     @endcan {{-- Mobile Complaint Settings End --}}
-                                    @can('Mobile Complaint Table')
+                                    @can('Mobile Complaint Read')
                                         <x-form.button button_type="" button_oneclick="Refresh()"
                                             button_class="btn btn-success btn-sm" button_icon="fa fa-refresh"
                                             button_name="Refresh" />
-                                    @endcan {{-- Mobile Complaint Table --}}
+                                    @endcan {{-- Mobile Complaint Read --}}
                                 </x-layouts.div-clearfix>
-                                @can('Mobile Complaint Read')
+                                @can('Mobile Complaint Table')
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                @can('Mobile Complaint Read')
+                                                @can('Mobile Complaint Table')
                                                     <th>Sn</th>
                                                 @endcan
                                                 @can('Mobile Complaint Read Code')
@@ -158,20 +158,39 @@
                 // dom: 'Bfrtip',
                 dom: '<"html5buttons"B>lTftigp',
                 "fnDrawCallback": function(oSettings) {
-                    $('.delete-mobileComplaints').on('click', function() {
-                        var mobileComplaintsID = $(this).data('mobileComplaints_id');
-                        var isReady = confirm("Are you sure" + mobileComplaintsID);
+                    $('.delete-mobile_complaint').on('click', function() {
+                        var jobTypeID = $(this).data('mobile_complaint_id');
+                        var isReady = confirm("Are you sure delete Mobile Complaint");
                         var myHeaders = new Headers({
                             "X-CSRF-TOKEN": $("input[name='_token']").val()
                         });
                         if (isReady) {
-                            fetch("/admin/fixancare/job-types/" + mobileComplaintsID, {
-                                method: 'DELETE',
-                                headers: myHeaders,
-                            }).then(function(response) {
+                            fetch("/admin/fixancare/masters/mobile-complaints/destroy" +
+                                jobTypeID, {
+                                    method: 'DELETE',
+                                    headers: myHeaders,
+                                }).then(function(response) {
                                 return response.json();
                             });
                             $('#example1').DataTable().ajax.reload();
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "3000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr.error("Mobile Complaint Deleting.....");
                         }
 
                     });

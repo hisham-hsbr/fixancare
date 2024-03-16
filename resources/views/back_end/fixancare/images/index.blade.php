@@ -1,11 +1,11 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'Image Index')
+@section('PageHead', 'Image Controller Index')
 
-@section('PageTitle', 'Image Index')
+@section('PageTitle', 'Image Controller Index')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('images.index') }}">Mobile Services</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('images.index') }}">Image Controller</a></li>
     <li class="breadcrumb-item active">Index</li>
 @endsection
 
@@ -13,7 +13,7 @@
     <x-links.header-links-dataTable />
 @endsection
 
-@section('actionTitle', 'Image Index')
+@section('actionTitle', 'Image Controller Index')
 @section('mainContent')
     <section class="content">
         <div class="container-fluid">
@@ -22,61 +22,58 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @can('Image Read')
+                            @can('Image Controller Read')
                                 <x-layouts.div-clearfix>
-                                    @can('Image Create')
+                                    @can('Image Controller Create')
                                         <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-primary btn-sm"
                                             href="{{ route('images.create') }}" button_icon="fa fa-add" button_name="Add" />
-                                    @endcan {{-- Image Create End --}}
-                                    @can('Image Import')
+                                    @endcan {{-- Image Controller Create End --}}
+                                    @can('Image Controller Import')
                                         <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-warning btn-sm"
                                             href="{{ route('images.import') }}" button_icon="fa fa-upload" button_name="Import" />
-                                    @endcan {{-- Image Create End --}}
-                                    @can('Image Settings')
+                                    @endcan {{-- Image Controller Create End --}}
+                                    @can('Image Controller Settings')
                                         <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-default btn-sm"
                                             href="" button_icon="fa fa-cog" button_name="Settings" />
-                                    @endcan {{-- Image Settings End --}}
-                                    @can('Image Table')
+                                    @endcan {{-- Image Controller Settings End --}}
+                                    @can('Image Controller Table')
                                         <x-form.button button_type="" button_oneclick="Refresh()"
                                             button_class="btn btn-success btn-sm" button_icon="fa fa-refresh"
                                             button_name="Refresh" />
-                                    @endcan {{-- Image Table --}}
+                                    @endcan {{-- Image Controller Table --}}
                                 </x-layouts.div-clearfix>
-                                @can('Image Read')
+                                @can('Image Controller Read')
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                @can('Image Read')
+                                                @can('Image Controller Read')
                                                     <th>Sn</th>
                                                 @endcan
-                                                @can('Image Read Code')
+                                                @can('Image Controller Read Code')
                                                     <th>code</th>
                                                 @endcan
-                                                @can('Image Read Name')
+                                                @can('Image Controller Read Name')
                                                     <th>Name</th>
                                                 @endcan
-                                                @can('Image Read Brand')
-                                                    <th>Brand</th>
-                                                @endcan
-                                                @can('Image Read Status')
+                                                @can('Image Controller Read Status')
                                                     <th>Status</th>
                                                 @endcan
-                                                @can('Image Read Created At')
+                                                @can('Image Controller Read Created At')
                                                     <th>Created At</th>
                                                 @endcan
-                                                @can('Image Read Updated At')
+                                                @can('Image Controller Read Updated At')
                                                     <th>Updated At</th>
                                                 @endcan
-                                                @can('Image Read Created By')
+                                                @can('Image Controller Read Created By')
                                                     <th>Created By</th>
                                                 @endcan
-                                                @can('Image Read Updated By')
+                                                @can('Image Controller Read Updated By')
                                                     <th>Updated By</th>
                                                 @endcan
-                                                @can('Image Edit')
+                                                @can('Image Controller Edit')
                                                     <th>Edit</th>
                                                 @endcan
-                                                @can('Image Delete')
+                                                @can('Image Controller Delete')
                                                     <th>Delete</th>
                                                 @endcan
                                             </tr>
@@ -86,44 +83,41 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                @can('Image Read')
+                                                @can('Image Controller Read')
                                                     <th>Sn</th>
                                                 @endcan
-                                                @can('Image Read Code')
+                                                @can('Image Controller Read Code')
                                                     <th>code</th>
                                                 @endcan
-                                                @can('Image Read Name')
+                                                @can('Image Controller Read Name')
                                                     <th>Name</th>
                                                 @endcan
-                                                @can('Image Read Brand')
-                                                    <th>Brand</th>
-                                                @endcan
-                                                @can('Image Read Status')
+                                                @can('Image Controller Read Status')
                                                     <th>Status</th>
                                                 @endcan
-                                                @can('Image Read Created At')
+                                                @can('Image Controller Read Created At')
                                                     <th>Created At</th>
                                                 @endcan
-                                                @can('Image Read Updated At')
+                                                @can('Image Controller Read Updated At')
                                                     <th>Updated At</th>
                                                 @endcan
-                                                @can('Image Read Created By')
+                                                @can('Image Controller Read Created By')
                                                     <th>Created By</th>
                                                 @endcan
-                                                @can('Image Read Updated By')
+                                                @can('Image Controller Read Updated By')
                                                     <th>Updated By</th>
                                                 @endcan
-                                                @can('Image Edit')
+                                                @can('Image Controller Edit')
                                                     <th>Edit</th>
                                                 @endcan
-                                                @can('Image Delete')
+                                                @can('Image Controller Delete')
                                                     <th>Delete</th>
                                                 @endcan
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    @endcan{{-- Image Table end --}}
-                                @endcan {{-- Image Read end --}}
+                                    @endcan{{-- Image Controller Table end --}}
+                                @endcan {{-- Image Controller Read end --}}
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -162,20 +156,39 @@
                 // dom: 'Bfrtip',
                 dom: '<"html5buttons"B>lTftigp',
                 "fnDrawCallback": function(oSettings) {
-                    $('.delete-priceLists').on('click', function() {
-                        var priceListsID = $(this).data('priceLists_id');
-                        var isReady = confirm("Are you sure" + priceListsID);
+                    $('.delete-image').on('click', function() {
+                        var jobTypeID = $(this).data('image_id');
+                        var isReady = confirm("Are you sure delete Image");
                         var myHeaders = new Headers({
                             "X-CSRF-TOKEN": $("input[name='_token']").val()
                         });
                         if (isReady) {
-                            fetch("/admin/users-management/job-types/" + priceListsID, {
-                                method: 'DELETE',
-                                headers: myHeaders,
-                            }).then(function(response) {
+                            fetch("/admin/fixancare/images/destroy" +
+                                jobTypeID, {
+                                    method: 'DELETE',
+                                    headers: myHeaders,
+                                }).then(function(response) {
                                 return response.json();
                             });
                             $('#example1').DataTable().ajax.reload();
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "3000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr.error("Image Deleting.....");
                         }
 
                     });
@@ -183,19 +196,19 @@
 
                 // "buttons": ["excel", "pdf", "print", "colvis"],
                 buttons: [
-                    @can('Image Table Export Excel')
+                    @can('Image Controller Table Export Excel')
                         'excel',
                     @endcan
-                    @can('Image Table Export PDF')
+                    @can('Image Controller Table Export PDF')
                         'pdf',
                     @endcan
-                    @can('Image Table Print')
+                    @can('Image Controller Table Print')
                         'print',
                     @endcan
-                    @can('Image Table Copy')
+                    @can('Image Controller Table Copy')
                         'copy',
                     @endcan
-                    @can('Image Table Column Visible')
+                    @can('Image Controller Table Column Visible')
                         'colvis',
                     @endcan
                 ],
@@ -214,14 +227,14 @@
                 ajax: '{!! route('images.get') !!}',
 
                 columns: [
-                    @can('Image Read')
+                    @can('Image Controller Read')
                         {
                             data: 'id',
                             name: 'id',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Code')
+                    @can('Image Controller Read Code')
                         {
                             data: 'code',
                             name: 'code',
@@ -229,7 +242,7 @@
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Code')
+                    @can('Image Controller Read Code')
                         {
                             data: 'name',
                             name: 'name',
@@ -237,22 +250,14 @@
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Code')
-                        {
-                            data: 'mobileBrand',
-                            name: 'mobileBrand',
-                            width: '',
-                            defaultContent: ''
-                        },
-                    @endcan
-                    @can('Image Read Status')
+                    @can('Image Controller Read Status')
                         {
                             data: 'status',
                             name: 'status',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Created At')
+                    @can('Image Controller Read Created At')
                         {
                             data: 'created_at',
                             name: 'created_at',
@@ -260,35 +265,35 @@
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Updated At')
+                    @can('Image Controller Read Updated At')
                         {
                             data: 'updated_at',
                             name: 'updated_at',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Created By')
+                    @can('Image Controller Read Created By')
                         {
                             data: 'created_by',
                             name: 'created_by',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Read Updated By')
+                    @can('Image Controller Read Updated By')
                         {
                             data: 'updated_by',
                             name: 'updated_by',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Edit')
+                    @can('Image Controller Edit')
                         {
                             data: 'editLink',
                             name: 'editLink',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Image Delete')
+                    @can('Image Controller Delete')
                         {
                             data: 'deleteLink',
                             name: 'deleteLink',

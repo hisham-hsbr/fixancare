@@ -5,7 +5,7 @@
 @section('PageTitle', 'Mobile Complaint Create')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('mobile-complaints.index') }}">Mobile Complaints</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('mobile-complaints.index') }}">Mobile Complaint</a></li>
     <li class="breadcrumb-item active">Create</li>
 @endsection
 
@@ -64,7 +64,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="">
-                            @can('Permission Create')
+                            @can('Mobile Complaint Create')
                                 <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
                             @endcan
                             <a type="button" href="{{ route('mobile-complaints.index') }}"

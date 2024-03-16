@@ -31,7 +31,14 @@ class MobileServiceController extends Controller
     public function index()
     {
         $mobile_services = MobileService::all();
-        return view('back_end.fixancare.mobile_services.index',compact('mobile_services'))->with('i');
+        $job_number = $mobile_services->sortBy('job_number')->pluck('job_number')->unique();
+        $mobile_models = $mobile_services->sortBy('mobileModel')->pluck('mobileModel')->unique();
+        $job_types = $mobile_services->sortBy('jobType')->pluck('jobType')->unique();
+        $job_statuses = $mobile_services->sortBy('jobStatus')->pluck('jobStatus')->unique();
+        $work_statuses = $mobile_services->sortBy('workStatus')->pluck('workStatus')->unique();
+        $mobile_complaints = $mobile_services->sortBy('mobileComplaint')->pluck('mobileComplaint')->unique();
+        
+        return view('back_end.fixancare.mobile_services.index',compact('mobile_services','mobile_models','job_types','job_statuses','work_statuses','mobile_complaints','job_number'))->with('i');
     }
 
     /**

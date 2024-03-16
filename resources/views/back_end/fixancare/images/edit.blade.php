@@ -1,11 +1,11 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'mobile Modle Edit')
+@section('PageHead', 'Image Controller Edit')
 
-@section('PageTitle', 'mobile Modle Edit')
+@section('PageTitle', 'Image Controller Edit')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('mobile-models.index') }}">Mobile Model</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('images.index') }}">Image Controller</a></li>
     <li class="breadcrumb-item active">Create</li>
 @endsection
 
@@ -20,7 +20,7 @@
         href="{{ asset('back_end_links/adminLinks/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 
-@section('actionTitle', 'mobile Modle Edit')
+@section('actionTitle', 'Image Controller Edit')
 @section('mainContent')
     <div class="container-fluid">
 
@@ -30,8 +30,8 @@
             </div>
             <!-- left column -->
             <div class="col-md-10">
-                @can('mobile Modle Edit')
-                    <form role="form" action="{{ route('mobile-models.update', $mobile_model->id) }}" method="post"
+                @can('Image Controller Edit')
+                    <form role="form" action="{{ route('images.update', $image->id) }}" method="post"
                         enctype="multipart/form-data" id="quickForm">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
@@ -42,25 +42,27 @@
 
                                 <x-form.form-group-label-input div_class="col-sm-6" label_for="code" lable_class="required"
                                     label_name="code" input_type="text" input_name="code" input_id="code" input_style=""
-                                    input_class="" input_value="{{ $mobile_model->code }}" input_placeholder="Enter code" />
+                                    input_class="" input_value="{{ $image->code }}" input_placeholder="Enter code" />
+
+                                <x-form.form-group-label-input div_class="col-sm-6" label_for="title" lable_class="required"
+                                    label_name="title" input_type="text" input_name="title" input_id="title" input_style=""
+                                    input_class="" input_value="{{ $image->title }}" input_placeholder="Enter title" />
+
                                 <x-form.form-group-label-input div_class="col-sm-6" label_for="name" lable_class="required"
-                                    label_name="job type Name" input_type="text" input_name="name" input_id="name"
-                                    input_style="" input_class="" input_value="{{ $mobile_model->name }}"
-                                    input_placeholder="job type Name" />
+                                    label_name="Image Name" input_type="text" input_name="name" input_id="name" input_style=""
+                                    input_class="" input_value="{{ $image->name }}" input_placeholder="Image Name" />
 
                                 <x-form.form-group-label-select div_class="col-sm-4" label_for="mobile_brand_id"
                                     lable_class="required" label_name="Mobile Brand" select_class="select2"
                                     select_name="mobile_brand_id" select_id="mobile_brand_id">
                                     <option disabled selected>-- Select mobile Brand--</option>
-                                    @foreach ($mobile_brands as $mobile_brand)
-                                        {{-- <option {{ old('mobile_brand_id') == $mobile_brand->id ? 'selected' : '' }}
+
+                                    {{-- <option {{ old('mobile_brand_id') == $mobile_brand->id ? 'selected' : '' }}
                                             value="{{ $mobile_brand->id }}">
                                             {{ $mobile_brand->name }}
                                         </option> --}}
-                                        <option {{ $mobile_model->brand->id == $mobile_brand->id ? 'selected' : '' }}
-                                            value="{{ $mobile_brand->id }}">{{ $mobile_brand->name }}
-                                        </option>
-                                    @endforeach
+
+
                                 </x-form.form-group-label-select>
 
 
@@ -73,7 +75,7 @@
                             <!-- /.card-header -->
                             <div class="col-sm-10 pl-5 pt-2">
                                 <input type="checkbox" class="form-check-input" name="status" value="1" id="status"
-                                    @if ($mobile_model->status == 1) {{ 'checked' }} @endif />
+                                    @if ($image->status == 1) {{ 'checked' }} @endif />
                                 <label class="form-check-label" for="status">Active</label>
                             </div>
                         </div>
@@ -82,7 +84,7 @@
                             @can('Job Type Update')
                                 <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
                             @endcan
-                            <a type="button" href="{{ route('mobile-models.index') }}"
+                            <a type="button" href="{{ route('images.index') }}"
                                 class="btn btn-warning float-right ml-1">Back</a>
                         </div>
                         <!-- /.card-footer -->

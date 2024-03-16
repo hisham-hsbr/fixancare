@@ -395,5 +395,35 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Brand Table Column Visible' , 'parent' => 'Brand' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // End <= Brand
 
+        // Start => Image Controller
+        Permission::create(['name' => 'Image Controller Read' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Create' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Edit' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Update' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Delete' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Settings' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Import' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Table' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Print PDF' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+
+        Permission::create(['name' => 'Image Controller Read Code' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Read Name' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+
+        Permission::create(['name' => 'Image Controller Read Description' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Read Edit Description' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+
+        Permission::create(['name' => 'Image Controller Read Status' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Read Created By' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Read Created At' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Read Updated By' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Read Updated At' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+
+        Permission::create(['name' => 'Image Controller Table Export Excel' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Table Export PDF' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Table Print' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Table Copy' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Image Controller Table Column Visible' , 'parent' => 'Image Controller' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // End <= Image Controller
+
     }
 }

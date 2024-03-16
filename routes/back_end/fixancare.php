@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
         Route::patch('/update/{id}', 'update')->name('update');
         Route::post('/store', 'store')->name('store');
         Route::delete('/destroy{id}', 'destroy')->name('destroy');
-        Route::get('/get', 'imageGet')->name('get');
+        Route::get('/get', 'imagesGet')->name('get');
         Route::get('/import', 'imageImport')->name('import');
         Route::post('/upload', 'imageUpload')->name('upload');
         Route::get('/download', 'imageDownload')->name('download');

@@ -158,7 +158,7 @@
                 {{-- Fixancare Start --}}
                 @canany([
                     'Mobile Service Read',
-                    'Image Controler Read',
+                    'Image Controller Read',
                     'Mobile Complaint Read',
                     'Job Type Read',
                     'Work
@@ -177,8 +177,8 @@
                                 menu_open="" active="{{ request()->is('admin/fixancare/mobile-service*') ? 'active' : '' }}"
                                 menu_icon="fa fa-toolbox" drop_icon="" />
                         @endcan {{-- Mobile Service Menu End --}}
-                        @can('Image Controler Read')
-                            <x-sidebar.sidebar-nav-multi-level head="Image Controler" href="{{ route('images.index') }}"
+                        @can('Image Controller Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Image Controller" href="{{ route('images.index') }}"
                                 menu_open="" active="{{ request()->is('admin/fixancare/image*') ? 'active' : '' }}"
                                 menu_icon="fa fa-images" drop_icon="" />
                         @endcan {{-- Image Menu End --}}

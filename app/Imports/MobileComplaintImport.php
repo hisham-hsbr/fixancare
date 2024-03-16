@@ -17,19 +17,25 @@ class MobileComplaintImport implements ToModel, WithHeadingRow, WithValidation
     */
     public function model(array $row)
     {
-        return new MobileComplaint([
-            //
+        $job_type = new MobileComplaint([
+            "code"=>$row['mobile_complaint_code'],
+            "name"=>$row['mobile_complaint_name'],
+            "status"=>$row['status'],
+            "created_by" => Auth::user()->id,
+            "updated_by" => Auth::user()->id,
         ]);
+        return $job_type;
     }
+
     public function rules(): array
     {
         return [
-            'brand_code' => 'required|unique:brands,code',
-            'brand_name' => 'required',
+            'mobile_complaint_code' => 'required|unique:mobile_complaints,code',
+            'mobile_complaint_name' => 'required',
 
              // Above is alias for as it always validates in batches
-             '*.brand_code' => 'required|unique:brands,code',
-             '*.brand_name' => 'required',
+             '*.mobile_complaint_code' => 'required|unique:mobile_complaints,code',
+             '*.mobile_complaint_name' => 'required',
         ];
     }
 }

@@ -8,7 +8,7 @@
     <a href="/job" class="btn btn-warning navbar-btn">Track Job</a>
     <nav id="navbar" class="navbar">
         @include('front_end.layouts.top-navbar-links')
-        <i class="bi bi-list mobile-nav-toggle"></i>
+
     </nav><!-- .navbar -->
 
 </div>

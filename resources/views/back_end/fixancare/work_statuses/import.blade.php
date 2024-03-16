@@ -37,8 +37,8 @@
 
                             <br>
                             <br>
-                            Download <a href="{{ route('work-statuses.download') }}"><i class="fa fa-file-excel"></i> Sample Job
-                                Type Excel</a> for Import
+                            Download <a href="{{ route('work-statuses.download') }}"><i class="fa fa-file-excel"></i> Sample
+                                Work Status Excel</a> for Import
 
 
                             <x-message.excel-import-errors />

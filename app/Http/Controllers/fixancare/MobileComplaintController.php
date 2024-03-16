@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\fixancare;
 
-use App\Http\Controllers\Controller;
-use App\Models\Fixancare\MobileComplaint;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Imports\MobileComplaintImport;
+use App\Models\Fixancare\MobileComplaint;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MobileComplaintController extends Controller
 {
@@ -81,7 +83,7 @@ class MobileComplaintController extends Controller
         ->addColumn('deleteLink', function (MobileComplaint $mobile_complaint) {
            $CSRFToken = "csrf_field()";
             $deleteLink ='
-                        <button class="btn btn-link delete-MobileComplaint" data-MobileComplaint_id="'.$mobile_complaint->id.'" type="submit"><i
+                        <button class="btn btn-link delete-mobile_complaint" data-mobile_complaint_id="'.$mobile_complaint->id.'" type="submit"><i
                                 class="fa-solid fa-trash-can text-danger"></i>
                         </button>';
                return $deleteLink;
@@ -98,6 +100,34 @@ class MobileComplaintController extends Controller
     public function create()
     {
         return view('back_end.fixancare.mobile_complaints.create');
+    }
+
+    public function mobileComplaintsImport()
+    {
+        return view('back_end.fixancare.mobile_complaints.import');
+    }
+
+    public function mobileComplaintsDownload()
+    {
+        $path=public_path('downloads/sample_excels/mobile_complaints_import_sample.xlsx');
+        return response()->download($path);
+    }
+
+    public function mobileComplaintsUpload(Request $request)
+    {
+        $request->validate([
+            'data'=>'required'
+        ]);
+
+        try {
+            Excel::import(new MobileComplaintImport,$request->file('data'));
+            return redirect()->route('mobile-complaints.index')
+            ->with('message_store', 'Work Statuses Import Successfully');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+             $failures = $e->failures();
+             return redirect()->back()->with('import_errors',$failures);
+        }
+
     }
 
     /**
@@ -184,8 +214,12 @@ class MobileComplaintController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MobileComplaint $mobile_complaint)
+    public function destroy($id)
     {
-        //
+        $mobile_complaint  = MobileComplaint::findOrFail($id);
+        $mobile_complaint->delete();
+
+        return redirect()->route('mobile-complaints.index')
+                ->with('message_update', 'Mobile Complaint Deleted Successfully');
     }
 }

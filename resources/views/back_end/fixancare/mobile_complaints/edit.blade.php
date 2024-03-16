@@ -6,7 +6,7 @@
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{ route('mobile-complaints.index') }}">Mobile Complaints</a></li>
-    <li class="breadcrumb-item active">Edit</li>
+    <li class="breadcrumb-item active">Create</li>
 @endsection
 
 @section('headLinks')
@@ -44,9 +44,9 @@
                                     label_name="code" input_type="text" input_name="code" input_id="code" input_style=""
                                     input_class="" input_value="{{ $mobile_complaint->code }}" input_placeholder="Enter code" />
                                 <x-form.form-group-label-input div_class="col-sm-6" label_for="name" lable_class="required"
-                                    label_name="job type Name" input_type="text" input_name="name" input_id="name"
+                                    label_name="Mobile Complaint Name" input_type="text" input_name="name" input_id="name"
                                     input_style="" input_class="" input_value="{{ $mobile_complaint->name }}"
-                                    input_placeholder="job type Name" />
+                                    input_placeholder="Mobile Complaint Name" />
 
 
                             </div>
@@ -64,7 +64,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="">
-                            @can('Job Type Update')
+                            @can('Mobile Complaint Update')
                                 <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
                             @endcan
                             <a type="button" href="{{ route('mobile-complaints.index') }}"
@@ -102,19 +102,19 @@
             // });
             $('#quickForm').validate({
                 rules: {
-                    name: {
+                    code: {
                         required: true,
                     },
-                    parent: {
+                    name: {
                         required: true,
                     },
                 },
                 messages: {
-                    name: {
-                        required: "Please Enter First Name",
+                    code: {
+                        required: "Please Enter code",
                     },
-                    parent: {
-                        required: "Please Enter Parent Name",
+                    name: {
+                        required: "Please Enter Name",
                     },
                 },
                 errorElement: 'span',

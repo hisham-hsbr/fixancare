@@ -37,8 +37,8 @@ class JobStatusController extends Controller
     public function JobStatusesGet()
     {
 
-        $job_statuss = JobStatus::all();
-        return Datatables::of($job_statuss)
+        $job_statuses = JobStatus::all();
+        return Datatables::of($job_statuses)
 
         ->setRowId(function ($job_status) {
             return $job_status->id;

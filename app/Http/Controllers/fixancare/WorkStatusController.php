@@ -4,11 +4,13 @@ namespace App\Http\Controllers\fixancare;
 
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use App\Imports\WorkStatusImport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Fixancare\workStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class workStatusController extends Controller
 {
@@ -102,7 +104,35 @@ class workStatusController extends Controller
      */
     public function create()
     {
-        return view('back_end.fixancare.job_types.create');
+        return view('back_end.fixancare.work_statuses.create');
+    }
+
+    public function workStatusesImport()
+    {
+        return view('back_end.fixancare.work_statuses.import');
+    }
+
+    public function workStatusesDownload()
+    {
+        $path=public_path('downloads/sample_excels/work_statuses_import_sample.xlsx');
+        return response()->download($path);
+    }
+
+    public function workStatusesUpload(Request $request)
+    {
+        $request->validate([
+            'data'=>'required'
+        ]);
+
+        try {
+            Excel::import(new WorkStatusImport,$request->file('data'));
+            return redirect()->route('work-statuses.index')
+            ->with('message_store', 'Work Statuses Import Successfully');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+             $failures = $e->failures();
+             return redirect()->back()->with('import_errors',$failures);
+        }
+
     }
 
     /**
@@ -112,7 +142,7 @@ class workStatusController extends Controller
     {
 
         $this->validate($request, [
-            'code' => 'required|unique:job_types,code',
+            'code' => 'required|unique:work_statuses,code',
             'name' => 'required',
         ]);
         $work_status = new WorkStatus();
@@ -135,7 +165,7 @@ class workStatusController extends Controller
         $work_status->save();
 
         return redirect()->route('work-statuses.index')
-                        ->with('message_store', 'Job type Created Successfully');
+                        ->with('message_store', 'Work Status Created Successfully');
     }
 
     /**
@@ -191,9 +221,7 @@ class workStatusController extends Controller
      */
     public function destroy($id)
     {
-         $work_status  = WorkStatus::findOrFail($id);
-
-         dd($work_status);
+        $work_status  = WorkStatus::findOrFail($id);
         $work_status->delete();
 
         return redirect()->route('work-statuses.index')

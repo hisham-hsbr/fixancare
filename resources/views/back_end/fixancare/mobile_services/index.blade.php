@@ -11,6 +11,7 @@
 
 @section('headLinks')
     <x-links.header-links-dataTable />
+    <x-links.header-links-select-two />
 @endsection
 
 @section('actionTitle', 'Mobile Services Index')
@@ -44,6 +45,69 @@
                                             button_name="Refresh" />
                                     @endcan {{-- Mobile Service Table --}}
                                 </x-layouts.div-clearfix>
+
+
+
+
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label class="col-form-label">Job number</label>
+                                        <select data-column="2" class="form-control select2 filter-select">
+                                            <option value="">Select Job number</option>
+                                            @foreach ($job_number as $job_number)
+                                                <option value="{{ $job_number }}">F-{{ $job_number }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="col-form-label">Job type</label>
+                                        <select data-column="3" class="form-control select2 filter-select">
+                                            <option value="">Select Job Type</option>
+                                            @foreach ($job_types as $job_type)
+                                                <option value="{{ $job_type->name }}">{{ $job_type->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="col-form-label">Mobile Model</label>
+                                        <select data-column="7" class="form-control select2 filter-select">
+                                            <option value="">Select Mobile Model</option>
+                                            @foreach ($mobile_models as $mobile_model)
+                                                <option value="{{ $mobile_model->name }}">{{ $mobile_model->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="col-form-label">Job Status</label>
+                                        <select data-column="5" class="form-control select2 filter-select">
+                                            <option value="">Select Job Status</option>
+                                            @foreach ($job_statuses as $job_status)
+                                                <option value="{{ $job_status->name }}">{{ $job_status->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="col-form-label">Work Status</label>
+                                        <select data-column="4" class="form-control select2 filter-select">
+                                            <option value="">Select Work Status</option>
+                                            @foreach ($work_statuses as $work_status)
+                                                <option value="{{ $work_status->name }}">{{ $work_status->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="col-form-label">Mobile Complaint</label>
+                                        <select data-column="8" class="form-control select2 filter-select">
+                                            <option value="">Select Mobile Complaint</option>
+                                            @foreach ($mobile_complaints as $mobile_complaint)
+                                                <option value="{{ $mobile_complaint->name }}">{{ $mobile_complaint->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 @can('Mobile Service Read')
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -247,6 +311,7 @@
 
     <x-message.message />
     <x-message.table-update />
+    <x-links.footer-link-select-two />
 
     <x-links.footer-links-dataTable />
 
@@ -529,6 +594,18 @@
                 ]
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+            $('.filter-input').keyup(function() {
+                $('#example1').DataTable().column($(this).data('column'))
+                    .search($(this).val())
+                    .draw();
+            });
+
+            $('.filter-select').change(function() {
+                $('#example1').DataTable().column($(this).data('column'))
+                    .search($(this).val())
+                    .draw();
+            });
         });
     </script>
 

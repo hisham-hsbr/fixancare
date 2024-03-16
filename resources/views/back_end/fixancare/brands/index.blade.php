@@ -42,33 +42,65 @@
                                             button_name="Refresh" />
                                     @endcan {{-- Brand Table --}}
                                 </x-layouts.div-clearfix>
-                                @can('Brand Read')
+                                @can('Brand Table')
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <input type="text" class="form-control filter-input"
+                                                        placeholder="search code" data-column="1" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control filter-input"
+                                                        placeholder="search code" data-column="2" />
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <select data-column="6" class="form-control filter-select">
+                                                        <option value="">Select name</option>
+                                                        @foreach ($createdByUsers as $user)
+                                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select data-column="7" class="form-control filter-select">
+                                                        <option value="">Select name</option>
+                                                        @foreach ($updatedByUsers as $user)
+                                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
                                             <tr>
                                                 @can('Brand Read')
                                                     <th>Sn</th>
                                                 @endcan
                                                 @can('Brand Read Code')
-                                                    <th>code</th>
+                                                    <th width="10%">code</th>
                                                 @endcan
                                                 @can('Brand Read Name')
-                                                    <th>Name</th>
+                                                    <th width="20%">Name</th>
                                                 @endcan
                                                 @can('Brand Read Status')
-                                                    <th>Status</th>
+                                                    <th width="10%">Status</th>
                                                 @endcan
                                                 @can('Brand Read Created At')
-                                                    <th>Created At</th>
+                                                    <th width="20%">Created At</th>
                                                 @endcan
                                                 @can('Brand Read Updated At')
-                                                    <th>Updated At</th>
+                                                    <th width="20%">Updated At</th>
                                                 @endcan
                                                 @can('Brand Read Created By')
-                                                    <th>Created By</th>
+                                                    <th width="20%">Created By</th>
                                                 @endcan
                                                 @can('Brand Read Updated By')
-                                                    <th>Updated By</th>
+                                                    <th width="20%">Updated By</th>
                                                 @endcan
                                                 @can('Brand Edit')
                                                     <th>Edit</th>
@@ -87,25 +119,25 @@
                                                     <th>Sn</th>
                                                 @endcan
                                                 @can('Brand Read Code')
-                                                    <th>code</th>
+                                                    <th width="10%">code</th>
                                                 @endcan
                                                 @can('Brand Read Name')
-                                                    <th>Name</th>
+                                                    <th width="20%">Name</th>
                                                 @endcan
                                                 @can('Brand Read Status')
-                                                    <th>Status</th>
+                                                    <th width="10%">Status</th>
                                                 @endcan
                                                 @can('Brand Read Created At')
-                                                    <th>Created At</th>
+                                                    <th width="20%">Created At</th>
                                                 @endcan
                                                 @can('Brand Read Updated At')
-                                                    <th>Updated At</th>
+                                                    <th width="20%">Updated At</th>
                                                 @endcan
                                                 @can('Brand Read Created By')
-                                                    <th>Created By</th>
+                                                    <th width="20%">Created By</th>
                                                 @endcan
                                                 @can('Brand Read Updated By')
-                                                    <th>Updated By</th>
+                                                    <th width="20%">Updated By</th>
                                                 @endcan
                                                 @can('Brand Edit')
                                                     <th>Edit</th>
@@ -136,6 +168,7 @@
 
 
     <x-message.message />
+    <x-message.table-update />
 
     <x-links.footer-links-dataTable />
 
@@ -155,20 +188,39 @@
                 // dom: 'Bfrtip',
                 dom: '<"html5buttons"B>lTftigp',
                 "fnDrawCallback": function(oSettings) {
-                    $('.delete-priceLists').on('click', function() {
-                        var priceListsID = $(this).data('priceLists_id');
-                        var isReady = confirm("Are you sure" + priceListsID);
+                    $('.delete-brand').on('click', function() {
+                        var brandID = $(this).data('brand_id');
+                        var isReady = confirm("Are you sure delete Brand");
                         var myHeaders = new Headers({
                             "X-CSRF-TOKEN": $("input[name='_token']").val()
                         });
                         if (isReady) {
-                            fetch("/admin/users-management/job-types/" + priceListsID, {
-                                method: 'DELETE',
-                                headers: myHeaders,
-                            }).then(function(response) {
+                            fetch("/admin/fixancare/masters/brands/destroy" +
+                                brandID, {
+                                    method: 'DELETE',
+                                    headers: myHeaders,
+                                }).then(function(response) {
                                 return response.json();
                             });
                             $('#example1').DataTable().ajax.reload();
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "3000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr.error("Brand Deleting.....");
                         }
 
                     });
@@ -218,7 +270,7 @@
                         {
                             data: 'code',
                             name: 'code',
-                            width: '',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
@@ -226,7 +278,7 @@
                         {
                             data: 'name',
                             name: 'name',
-                            width: '',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
@@ -234,6 +286,7 @@
                         {
                             data: 'status',
                             name: 'status',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
@@ -249,6 +302,7 @@
                         {
                             data: 'updated_at',
                             name: 'updated_at',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
@@ -256,13 +310,15 @@
                         {
                             data: 'created_by',
                             name: 'created_by',
-                            defaultContent: ''
+                            width: '100%',
+                            defaultContent: '',
                         },
                     @endcan
                     @can('Brand Read Updated By')
                         {
                             data: 'updated_by',
                             name: 'updated_by',
+                            width: '100%',
                             defaultContent: ''
                         },
                     @endcan
@@ -283,13 +339,22 @@
                 ]
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+            $('.filter-input').keyup(function() {
+                $('#example1').DataTable().column($(this).data('column'))
+                    .search($(this).val())
+                    .draw();
+            });
+
+            $('.filter-select').change(function() {
+                $('#example1').DataTable().column($(this).data('column'))
+                    .search($(this).val())
+                    .draw();
+            });
+
+
         });
     </script>
-    <script>
-        function Refresh() {
-            $('#example1').DataTable().ajax.reload();
-            toastr.success("Refreshed");
-        }
-    </script>
+
 
 @endsection

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\fixancare;
 
-use App\Http\Controllers\Controller;
-use App\Models\Fixancare\JobType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use App\Imports\JobTypeImport;
 use Yajra\Datatables\Datatables;
+use App\Models\Fixancare\JobType;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JobTypeController extends Controller
 {
@@ -19,6 +21,10 @@ class JobTypeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('permission:Job Type Read', ['only' => ['index']]);
+        $this->middleware('permission:Job Type Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Job Type Edit', ['only' => ['Edit','Update']]);
+        $this->middleware('permission:Job Type Delete', ['only' => ['destroy']]);
 
     }
 
@@ -81,7 +87,7 @@ class JobTypeController extends Controller
         ->addColumn('deleteLink', function (JobType $job_type) {
            $CSRFToken = "csrf_field()";
             $deleteLink ='
-                        <button class="btn btn-link delete-JobType" data-JobType_id="'.$job_type->id.'" type="submit"><i
+                        <button class="btn btn-link delete-job_type" data-job_type_id="'.$job_type->id.'" type="submit"><i
                                 class="fa-solid fa-trash-can text-danger"></i>
                         </button>';
                return $deleteLink;
@@ -99,6 +105,34 @@ class JobTypeController extends Controller
     public function create()
     {
         return view('back_end.fixancare.job_types.create');
+    }
+
+    public function jobTypesImport()
+    {
+        return view('back_end.fixancare.job_types.import');
+    }
+
+    public function jobTypesDownload()
+    {
+        $path=public_path('downloads/sample_excels/job_types_import_sample.xlsx');
+        return response()->download($path);
+    }
+
+    public function jobTypesUpload(Request $request)
+    {
+        $request->validate([
+            'data'=>'required'
+        ]);
+
+        try {
+            Excel::import(new JobTypeImport,$request->file('data'));
+            return redirect()->route('job-types.index')
+            ->with('message_store', 'Job types Import Successfully');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+             $failures = $e->failures();
+             return redirect()->back()->with('import_errors',$failures);
+        }
+
     }
 
     /**
@@ -185,8 +219,12 @@ class JobTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobType $jobType)
+    public function destroy($id)
     {
-        //
+        $job_type  = JobType::findOrFail($id);
+        $job_type->delete();
+
+        return redirect()->route('job-types.index')
+                ->with('message_update', 'Job Type Deleted Successfully');
     }
 }

@@ -3,19 +3,47 @@
 namespace App\Models\Fixancare;
 
 use Carbon\Carbon;
-use App\Models\Fixancare\Brand;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class JobType extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
      protected $fillable = [
+        'code',
         'name',
-        'status'
+        'status',
+        'created_by',
+        'updated_by',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        $useLogName='Job type';
+
+        $run_seeder_disable=env('RUN_SEEDER_DISABLE');
+
+        if($run_seeder_disable=='Y'){
+
+            return LogOptions::defaults()
+            ->logOnly(['code','name','local_name','description','status','created_at','updated_at'])
+            ->setDescriptionForEvent(fn(string $eventName) => "$useLogName {$eventName}")
+            ->useLogName($useLogName)
+            ->logOnlyDirty();
+        }
+        if($run_seeder_disable=='N'){
+
+            return LogOptions::defaults()
+            ->logOnly(['code','name'])
+            ->setDescriptionForEvent(fn(string $eventName) => "$useLogName {$eventName}")
+            ->useLogName($useLogName)
+            ->logOnlyDirty();
+        }
+    }
 
     public function getCreatedAtAttribute()
     {

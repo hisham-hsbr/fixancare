@@ -1,8 +1,8 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'Job Types Edit')
+@section('PageHead', 'Job Type Edit')
 
-@section('PageTitle', 'Job Types Edit')
+@section('PageTitle', 'Job Type Edit')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{ route('job-types.index') }}">Job Types</a></li>
@@ -20,7 +20,7 @@
         href="{{ asset('back_end_links/adminLinks/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 
-@section('actionTitle', 'Job Types Edit')
+@section('actionTitle', 'Job Type Edit')
 @section('mainContent')
     <div class="container-fluid">
 
@@ -30,7 +30,7 @@
             </div>
             <!-- left column -->
             <div class="col-md-10">
-                @can('Job Types Edit')
+                @can('Job Type Edit')
                     <form role="form" action="{{ route('job-types.update', $job_type->id) }}" method="post"
                         enctype="multipart/form-data" id="quickForm">
                         {{ csrf_field() }}

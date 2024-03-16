@@ -64,7 +64,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="">
-                            @can('Permission Create')
+                            @can('Job Type Create')
                                 <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
                             @endcan
                             <a type="button" href="{{ route('job-types.index') }}"

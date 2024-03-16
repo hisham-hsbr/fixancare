@@ -142,6 +142,7 @@
 
 
     <x-message.message />
+    <x-message.table-update />
 
     <x-links.footer-links-dataTable />
 
@@ -298,12 +299,6 @@
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
-    </script>
-    <script>
-        function Refresh() {
-            $('#example1').DataTable().ajax.reload();
-            toastr.success("Refreshed");
-        }
     </script>
 
 @endsection

@@ -215,6 +215,10 @@
                             @can('Mobile Service Edit')
                                 <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
                             @endcan
+                            @can('Mobile Service Pdf')
+                                <a type="button" href="{{ route('mobile-services.pdf', $mobile_services->id) }}"
+                                    class="btn btn-info float-right ml-1"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                            @endcan
                             <a type="button" href="{{ route('mobile-services.index') }}"
                                 class="btn btn-warning float-right ml-1">Back</a>
                         </div>

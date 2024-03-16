@@ -19,20 +19,24 @@ class Blood extends Model
         'status'
     ];
 
-    //-->start laravel-activitylog
-    //only the `deleted` event will get logged automatically
-    // protected static $recordEvents = ['deleted'];
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults()
-        ->logOnly(['name','description','status'])
-        // Chain fluent methods for configuration options
+        $run_seeder_disable=env('RUN_SEEDER_DISABLE');
 
-        ->setDescriptionForEvent(fn(string $eventName) => "This Blood Group has been {$eventName}")
-        ->useLogName('Blood Group')
-        // ->dontLogIfAttributesChangedOnly(['email']) //By default the updated_at attribute is not ignored and will trigger an activity being logged
-        ->logOnlyDirty();
-        // ->dontSubmitEmptyLogs(); //Prevent save logs items that have no changed attribute
+        if($run_seeder_disable=='Y'){
+            return LogOptions::defaults()
+            ->logOnly(['name','description','status','created_at','updated_at'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This Blood Group has been {$eventName}")
+            ->useLogName('Blood Group')
+            ->logOnlyDirty();
+        }
+        if($run_seeder_disable=='N'){
+            return LogOptions::defaults()
+            ->logOnly(['name'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This Blood Group has been {$eventName}")
+            ->useLogName('Blood Group')
+            ->logOnlyDirty();
+        }
     }
 
     // <--End laravel-activitylog

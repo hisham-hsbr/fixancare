@@ -64,9 +64,9 @@
                                             {{ $activityLog->activityUser->name }}</code></label>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="col-sm-4">Updated At</label>
+                                    {{-- <label class="col-sm-4">Updated At</label>
                                     <label><code>:
-                                            {{ $activityLog->updated_at }}</code></label>
+                                            {{ $activityLog->updated_at }}</code></label> --}}
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="col-sm-4">Created At</label>

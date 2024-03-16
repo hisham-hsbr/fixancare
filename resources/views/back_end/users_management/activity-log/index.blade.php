@@ -222,6 +222,7 @@
                             data: 'created_user',
                             name: 'created_user',
                             defaultContent: ''
+                            // searchable: false
                         },
                     @endcan
                     @can('Activity Log Created Ate')
@@ -235,7 +236,7 @@
                         {
                             data: 'viewLink',
                             name: 'editLink',
-                            defaultContent: ''
+                            searchable: false
                         },
                     @endcan
                 ]

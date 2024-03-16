@@ -8,91 +8,52 @@
     <ul class="faq-list">
 
         <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a
-                erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i
-                    class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">പുതിയ മൊബൈൽ വാങ്ങുമ്പോൾ പഴയ
+                മൊബൈലിലുള്ള ഡാറ്റാ പുതിയതിലേക്ക് ട്രാൻസ്ഫർ ചെയ്യാൻ പറ്റുമോ ? <i
+                    class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non
-                    curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus
-                    non.
+                    പറ്റും.
                 </p>
             </div>
         </li>
 
         <li>
-            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque
-                varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">എൻ്റെ ഫോൺ ഉപയോഗിക്കുമ്പോൾ നല്ലോണം
+                ഹാങ്ങ് ആയി കാണുന്നു ഞാൻ എന്തുചെയ്യണം ?<i class="bi bi-chevron-down icon-show"></i><i
                     class="bi bi-chevron-up icon-close"></i>
             </div>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum
-                    velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec
-                    pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus
-                    turpis massa tincidunt dui.
+                    സ്റ്റോറേജ് ഫുൾ ആവുമ്പോഴാണ് മൊബൈൽ ഹാങ്ങ് ആവുന്നത്. അത് കൊണ്ട് ആവശ്യമില്ലാത്ത ഫോട്ടോ, ആപ്പ് Etc...
+                    എന്നിവ ഒഴിവാക്കുക.
                 </p>
             </div>
         </li>
 
         <li>
-            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet
-                consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i
-                    class="bi bi-chevron-up icon-close"></i>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">എന്താണ് EMI ? <i
+                    class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
             </div>
             <div id="faq3" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus
-                    pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum
-                    tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna
-                    molestie at elementum eu facilisis sed odio morbi quis
+                    മുഴുവൻ തുകയും മുൻകൂറായി അടയ്ക്കുന്നതിനുപകരം ചെറിയ തുകകളാക്കി പ്രതിമാസം അടക്കുന്നതിനെയാണ് EMI എന്ന്
+                    പറയുന്നത്.
                 </p>
             </div>
         </li>
 
         <li>
-            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci
-                dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">പുതിയ ഫോൺ വാങ്ങിയാൽ 6-8 മണിക്കൂർ
+                ചാർജിന് വെക്കണം എന്ന് പറയുന്നത് ശരിയാണോ ? <i class="bi bi-chevron-down icon-show"></i><i
                     class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq4" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum
-                    velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec
-                    pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus
-                    turpis massa tincidunt dui.
+                    അല്ല. 100% ചാർജ് ചെയ്താൽ മതിയാവുന്നതാണ്.
                 </p>
             </div>
         </li>
 
-        <li>
-            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam
-                pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i
-                    class="bi bi-chevron-up icon-close"></i>
-            </div>
-            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est
-                    ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit
-                    adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                </p>
-            </div>
-        </li>
-
-        <li>
-            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus
-                faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i
-                    class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
-            </div>
-            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo
-                    integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc
-                    eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                    Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus.
-                    Nibh tellus molestie nunc non blandit massa enim nec.
-                </p>
-            </div>
-        </li>
 
     </ul>
 

@@ -5,10 +5,12 @@ namespace App\Http\Controllers\fixancare;
 use Illuminate\Http\Request;
 use App\Models\Fixancare\Brand;
 use Yajra\Datatables\Datatables;
+use App\Imports\MobileModelImport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Fixancare\MobileModel;
 
 class MobileModelController extends Controller
@@ -83,14 +85,15 @@ class MobileModelController extends Controller
             $editLink ='<a href="'. route('mobile-models.edit', $mobile_model->id) .'" class="ml-2"><i class="fa-solid fa-edit"></i></a>';
                return $editLink;
         })
+
         ->addColumn('deleteLink', function (MobileModel $mobile_model) {
-           $CSRFToken = "csrf_field()";
-            $deleteLink ='
-                        <button class="btn btn-link delete-MobileModel" data-MobileModel_id="'.$mobile_model->id.'" type="submit"><i
-                                class="fa-solid fa-trash-can text-danger"></i>
-                        </button>';
-               return $deleteLink;
-        })
+            $CSRFToken = "csrf_field()";
+             $deleteLink ='
+                         <button class="btn btn-link delete-mobile_model" data-mobile_model_id="'.$mobile_model->id.'" type="submit"><i
+                                 class="fa-solid fa-trash-can text-danger"></i>
+                         </button>';
+                return $deleteLink;
+         })
 
 
        ->rawColumns(['mobileBrand','status','editLink','deleteLink'])
@@ -104,6 +107,33 @@ class MobileModelController extends Controller
     {
         $mobile_brands = Brand::all();
         return view('back_end.fixancare.mobile_models.create',compact('mobile_brands'));
+    }
+
+    public function mobileModelsImport()
+    {
+        return view('back_end.fixancare.mobile_models.import');
+    }
+
+    public function mobileModelsDownload()
+    {
+        $path=public_path('downloads/sample_excels/mobile_models_import_sample.xlsx');
+        return response()->download($path);
+    }
+
+    public function mobileModelsUpload(Request $request)
+    {
+        $request->validate([
+            'data'=>'required'
+        ]);
+
+        try {
+            Excel::import(new MobileModelImport,$request->file('data'));
+            return redirect()->route('mobile-models.index')
+            ->with('message_store', 'Mobile Models Import Successfully');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+             $failures = $e->failures();
+             return redirect()->back()->with('import_errors',$failures);
+        }
     }
 
     /**
@@ -195,8 +225,12 @@ class MobileModelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MobileModel $mobileModel)
+    public function destroy($id)
     {
-        //
+        $mobile_model  = MobileModel::findOrFail($id);
+        $mobile_model->delete();
+
+        return redirect()->route('mobile-models.index')
+                ->with('message_update', 'Mobile Model Deleted Successfully');
     }
 }

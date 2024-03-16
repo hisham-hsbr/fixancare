@@ -39,7 +39,8 @@
                         We sale all types new and old mobiles. EMI available.
                     </p>
                     <p>
-                        നിങ്ങളുടെ ഇഷ്ടപ്പെട്ട ഫോൺ വാങ്ങുവാൻ ഇനി എന്തിന് കാത്തു നിൽക്കണം fixancar ഇൽ പുതിയതും പഴയതുമായ
+                        നിങ്ങളുടെ ഇഷ്ടപ്പെട്ട ഫോൺ വാങ്ങുവാൻ ഇനി എന്തിന് കാത്തു നിൽക്കണം <strong
+                            style="color:red;">FIXANCARE</strong> ഇൽ പുതിയതും പഴയതുമായ
                         എല്ലാ ഫോണുകളും മിതമായ നിരക്കിൽ ലഭ്യമാണ്.
                         കൂടാതെ എല്ലാ പുതിയ ബ്രാൻഡഡ് ഫോണുകൾക്കും ഇവിടെ ലോൺ സൗകര്യവും ലഭ്യമാണ്
                     </p>
@@ -58,13 +59,17 @@
                         We Service All Types Of Mobiles
                     </p>
                     <p>
-                        ഫോൺ കേടായാൽ ബേജാറാവേണ്ട! സമയം കളയേണ്ട! കടത്തേടി അലയേണ്ട! നേരെ പോന്നോളി Fixancare ഇലേക്ക്. ഇവിടെ
+                        ഫോൺ കേടായാൽ ബേജാറാവേണ്ട! സമയം കളയേണ്ട! കടത്തേടി അലയേണ്ട! നേരെ പോന്നോളി <strong
+                            style="color:red;">FIXANCARE</strong> ഇലേക്ക്. ഇവിടെ
                         എല്ലാ ഫോണുകളുടെയും ടാബുകളുടെയും സർവീസ് മികച്ച ടെക്‌നിഷൻ മാരുടെ മേൽ നോട്ടത്തിൽ വളരെ
-                        ഉത്തരവാദിത്തോട് കൂടി ചെയ്തു കൊടുക്കുന്നുണ്ട്.
-                        നിങ്ങളുടെ മൊബൈൽ സർവീസ് ചെയ്യുന്നതിന്റെ നിലവിലെ stastus അറിയുവാൻ വേണ്ടി താഴെ കാണുന്ന Track Job
-                        എന്ന ബട്ടനിൽ Click ചെയ്ത് നിങ്ങളുടെ ജോബ് നമ്പറോ കോൺടാക്ട് നമ്പറോ ഉപയോഗിച്ചു നിങ്ങൾക് തന്നെ Track
-                        ചെയ്യാവുന്നതാണ്.
-                        കൂടാതെ 5 കിലോമിറ്റർ ചുറ്റളവിൽ ഡെലിവറി സർവീസും ലഭ്യമാണ്.
+                        ഉത്തരവാദിത്തോട് കൂടി ചെയ്തു കൊടുക്കുന്നുണ്ട്. നിങ്ങളുടെ മൊബൈൽ സർവീസ് ചെയ്യുന്നതിന്റെ നിലവിലെ
+                        stastus അറിയുവാൻ വേണ്ടി താഴെ കാണുന്ന<strong style="color:red;"> Track Job </strong>എന്ന ബട്ടനിൽ
+                        Click
+                        ചെയ്ത് നിങ്ങളുടെ ജോബ് നമ്പറോ
+                        കോൺടാക്ട് നമ്പറോ ഉപയോഗിച്ചു നിങ്ങൾക് തന്നെ Track ചെയ്യാവുന്നതാണ്.</p>
+                    <p>
+                        <strong style="color:red;"> കൂടാതെ 5 കിലോമിറ്റർ ചുറ്റളവിൽ
+                            ഡെലിവറി സർവീസും ലഭ്യമാണ്.</strong>
                     </p>
 
 
@@ -99,27 +104,15 @@
             <div class="row">
                 <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
                     <h3>Other Sales</h3>
-                    <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum
-                    </p>
                     <p class="fst-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore
-                        magna aliqua.
+                        ന്യു ജെൻ സ്റ്റൈലിഷിനൊരു ഹലോ!❄️🕶️
                     </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
-                            voluptate velit.</li>
-                        <li><i class="ri-check-double-line"></i> hi Ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                            storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                    </ul>
+                    <p>
+                        നിങ്ങളുടെ സ്റ്റൈലിഷ് ലൈഫിലേക്ക് ഒരു അടി മുന്നോട്ട്.
+                        സ്മാർട്ട് വാച്ചസ് & നോർമൽ ഡിജിറ്റൽ വാച്ചസ്, കൂളിംഗ് ക്ലാസ് , ബ്യുട്ടി ക്രീം, ലോങ്ങ് ടൈം സ്മെല്
+                        പെർഫ്യൂം,ഫ്ലാഷിങ് മോഡൽ ലൈറ്റ് etc.... ഇനി എല്ലാം ഒരേ കുടക്കീഴിൽ.
+
+                    </p>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 text-center">
                     <img src="{{ asset('front_end_links/selecao/assets/img/features-4.png') }}" alt=""

@@ -1,19 +1,19 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'Price List Import')
+@section('PageHead', 'Brand Import')
 
-@section('PageTitle', 'Price List Import')
+@section('PageTitle', 'Brand Import')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('price-lists.index') }}">Permissions</a></li>
-    <li class="breadcrumb-item active">Create</li>
+    <li class="breadcrumb-item"><a href="{{ route('brands.index') }}">Brands</a></li>
+    <li class="breadcrumb-item active">Import</li>
 @endsection
 
 @section('headLinks')
 
 @endsection
 
-@section('actionTitle', 'Price List Import')
+@section('actionTitle', 'Brand Import')
 @section('mainContent')
     <div class="container-fluid">
 
@@ -23,32 +23,33 @@
             </div>
             <!-- left column -->
             <div class="col-md-10">
-                @can('Price List Import')
+                @can('Brand Import')
                     <div class="card-body">
 
-                        <form method="post" action="{{ route('price-lists.upload') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('brands.upload') }}" enctype="multipart/form-data">
                             @csrf
                             {{ csrf_field() }}
 
-                            <label class="form-label">Select a Price List Excel File :</label>
+                            <label class="form-label">Select a Brand Excel File :</label>
 
                             <input class="" id="data" name="data" type="file" required autofocus
                                 autocomplete="data" />
 
                             <br>
                             <br>
-                            Download <a href="{{ route('price-lists.download') }}"><i class="fa fa-file-excel"></i> Sample Price
-                                List Excel</a> for Import
+                            Download <a href="{{ route('brands.download') }}"><i class="fa fa-file-excel"></i> Sample Brand
+                                Excel</a> for Import
+
+                            <x-message.excel-import-errors />
                     </div>
 
 
                     <!-- /.card-body -->
                     <div class="">
-                        @can('Price List Import')
-                            <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
+                        @can('Brand Import')
+                            <button type="submit" class="btn btn-primary float-right ml-1">Import</button>
                         @endcan
-                        <a type="button" href="{{ route('permissions.index') }}"
-                            class="btn btn-warning float-right ml-1">Back</a>
+                        <a type="button" href="{{ route('brands.index') }}" class="btn btn-warning float-right ml-1">Back</a>
                     </div>
                     <!-- /.card-footer -->
                     </form>
@@ -68,5 +69,6 @@
 @section('footerLinks')
 
     <x-message.message />
+    <x-message.excel-import-errors />
 
 @endsection

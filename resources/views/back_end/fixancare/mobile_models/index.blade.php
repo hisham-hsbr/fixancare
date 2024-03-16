@@ -143,6 +143,7 @@
 
 
     <x-message.message />
+    <x-message.table-update />
 
     <x-links.footer-links-dataTable />
 
@@ -162,20 +163,39 @@
                 // dom: 'Bfrtip',
                 dom: '<"html5buttons"B>lTftigp',
                 "fnDrawCallback": function(oSettings) {
-                    $('.delete-priceLists').on('click', function() {
-                        var priceListsID = $(this).data('priceLists_id');
-                        var isReady = confirm("Are you sure" + priceListsID);
+                    $('.delete-mobile_model').on('click', function() {
+                        var mobileModelID = $(this).data('mobile_model_id');
+                        var isReady = confirm("Are you sure delete Mobile Models");
                         var myHeaders = new Headers({
                             "X-CSRF-TOKEN": $("input[name='_token']").val()
                         });
                         if (isReady) {
-                            fetch("/admin/users-management/job-types/" + priceListsID, {
-                                method: 'DELETE',
-                                headers: myHeaders,
-                            }).then(function(response) {
+                            fetch("/admin/fixancare/masters/mobile-models/destroy" +
+                                mobileModelID, {
+                                    method: 'DELETE',
+                                    headers: myHeaders,
+                                }).then(function(response) {
                                 return response.json();
                             });
                             $('#example1').DataTable().ajax.reload();
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "3000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr.error("Mobile Model Deleting.....");
                         }
 
                     });
@@ -299,12 +319,6 @@
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
-    </script>
-    <script>
-        function Refresh() {
-            $('#example1').DataTable().ajax.reload();
-            toastr.success("Refreshed");
-        }
     </script>
 
 @endsection

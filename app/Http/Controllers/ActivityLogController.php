@@ -33,7 +33,9 @@ class ActivitylogController extends Controller
     }
     public function activityLogsGet()
     {
-        return Datatables::of(Activity::query())
+
+        $activity = Activity::all();
+        return Datatables::of($activity)
 
         ->setRowId(function ($activity) {
             return $activity->id;
@@ -56,7 +58,7 @@ class ActivitylogController extends Controller
                    return $viewLink;
             })
 
-           ->rawColumns(['status','viewLink'])
+           ->rawColumns(['status','viewLink','created_user'])
             ->toJson();
     }
 }

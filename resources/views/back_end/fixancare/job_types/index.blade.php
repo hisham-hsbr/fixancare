@@ -5,7 +5,7 @@
 @section('PageTitle', 'Job Type Index')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('job-types.index') }}">Mobile Services</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('job-types.index') }}">Job Type</a></li>
     <li class="breadcrumb-item active">Index</li>
 @endsection
 
@@ -37,17 +37,17 @@
                                         <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-default btn-sm"
                                             href="" button_icon="fa fa-cog" button_name="Settings" />
                                     @endcan {{-- Job Type Settings End --}}
-                                    @can('Job Type Table')
+                                    @can('Job Type Read')
                                         <x-form.button button_type="" button_oneclick="Refresh()"
                                             button_class="btn btn-success btn-sm" button_icon="fa fa-refresh"
                                             button_name="Refresh" />
-                                    @endcan {{-- Job Type Table --}}
+                                    @endcan {{-- Job Type Read --}}
                                 </x-layouts.div-clearfix>
-                                @can('Job Type Read')
+                                @can('Job Type Table')
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                @can('Job Type Read')
+                                                @can('Job Type Table')
                                                     <th>Sn</th>
                                                 @endcan
                                                 @can('Job Type Read Code')
@@ -137,6 +137,7 @@
 
 
     <x-message.message />
+    <x-message.table-update />
 
     <x-links.footer-links-dataTable />
 
@@ -156,20 +157,39 @@
                 // dom: 'Bfrtip',
                 dom: '<"html5buttons"B>lTftigp',
                 "fnDrawCallback": function(oSettings) {
-                    $('.delete-priceLists').on('click', function() {
-                        var priceListsID = $(this).data('priceLists_id');
-                        var isReady = confirm("Are you sure" + priceListsID);
+                    $('.delete-job_type').on('click', function() {
+                        var jobTypeID = $(this).data('job_type_id');
+                        var isReady = confirm("Are you sure delete job type");
                         var myHeaders = new Headers({
                             "X-CSRF-TOKEN": $("input[name='_token']").val()
                         });
                         if (isReady) {
-                            fetch("/admin/users-management/job-types/" + priceListsID, {
-                                method: 'DELETE',
-                                headers: myHeaders,
-                            }).then(function(response) {
+                            fetch("/admin/fixancare/masters/job-types/destroy" +
+                                jobTypeID, {
+                                    method: 'DELETE',
+                                    headers: myHeaders,
+                                }).then(function(response) {
                                 return response.json();
                             });
                             $('#example1').DataTable().ajax.reload();
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "3000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr.error("Job Type Deleting.....");
                         }
 
                     });
@@ -285,12 +305,6 @@
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
-    </script>
-    <script>
-        function Refresh() {
-            $('#example1').DataTable().ajax.reload();
-            toastr.success("Refreshed");
-        }
     </script>
 
 @endsection

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Fixancare\MobileModel;
 use App\Models\Fixancare\MobileService;
 use App\Models\Fixancare\MobileComplaint;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MobileServiceController extends Controller
 {
@@ -52,6 +53,7 @@ class MobileServiceController extends Controller
     {
 
         $mobile_services = MobileService::all();
+        // $mobile_services = MobileService::orderByRaw('ISNULL(display_order), display_order ASC')->get();
         // $mobile_services = MobileService::orderBy('job_number', 'DESC');
         return Datatables::of($mobile_services)
 
@@ -156,6 +158,11 @@ class MobileServiceController extends Controller
             $editLink ='<a href="'. route('mobile-services.edit', $mobile_service->id) .'" class="ml-2"><i class="fa-solid fa-edit"></i></a>';
                return $editLink;
         })
+        ->addColumn('pdfLink', function (MobileService $mobile_service) {
+
+            $pdfLink ='<a href="'. route('mobile-services.pdf', $mobile_service->id) .'" class="ml-2"><i class="fa-solid fa-file-pdf"></i></a>';
+               return $pdfLink;
+        })
         ->addColumn('deleteLink', function (MobileService $mobile_service) {
            $CSRFToken = "csrf_field()";
             $deleteLink ='
@@ -166,7 +173,7 @@ class MobileServiceController extends Controller
         })
 
 
-       ->rawColumns(['jobStatus','jobType','workStatus','mobileModel', 'mobileComplaint','status','editLink','deleteLink'])
+       ->rawColumns(['jobStatus','jobType','workStatus','mobileModel', 'mobileComplaint','status','editLink','pdfLink','deleteLink'])
         ->toJson();
     }
 
@@ -330,4 +337,27 @@ class MobileServiceController extends Controller
     {
         //
     }
+
+    public function mobileServicesPDF($id)
+    {
+        $mobile_services = MobileService::find($id);
+        $mobile_models = MobileModel::all();
+        $job_types = JobType::all();
+        $job_statuses = JobStatus::all();
+        $work_statuses = WorkStatus::all();
+        $mobile_complaints = MobileComplaint::all();
+        $data=[
+            'mobile_services'=>$mobile_services,
+            'mobile_models'=>$mobile_models,
+            'job_types'=>$job_types,
+            'job_statuses'=>$job_statuses,
+            'work_statuses'=>$work_statuses,
+            'mobile_complaints'=>$mobile_complaints,
+        ];
+        // return view('back_end.fixancare.mobile_services.generate_pdf.blade',compact('mobile_services','mobile_models','job_types','job_statuses','work_statuses','mobile_complaints'));
+
+        $pdf = Pdf::loadView('back_end.fixancare.mobile_services.generate_pdf', $data)->setPaper('a5', 'portrait')->setWarnings(false);
+        return $pdf->download('invoice.pdf');
+    }
+
 }

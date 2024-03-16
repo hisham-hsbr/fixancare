@@ -1,17 +1,21 @@
 <footer id="footer">
     <div class="container">
-                <a href="index.html"><img src="{{ asset('/storage/images/app/logo_white.png') }}" alt="" width="187"
+        <a href="index.html"><img src="{{ asset('/storage/images/app/logo_white.png') }}" alt="" width="187"
                 height="20" class="img-fluid"></a></p>
         <div class="social-links">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            {{-- <a href="#" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a> --}}
+            <a href="https://www.facebook.com/fixancarebdk" target="_blank" class="facebook"><i
+                    class="bx bxl-facebook"></i></a>
+            <a href="https://www.instagram.com/fixancarebdk/" target="_blank" class="instagram"><i
+                    class="bx bxl-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCPqsYqs2quVWLcBpEP2228w" target="_blank" class="youtube"><i
+                    class="bx bxl-youtube"></i></a>
+            {{-- <a href="#" target="_blank" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
+            {{-- <a href="#" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a> --}}
         </div>
         <div class="copyright">
-                        <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> <a
-                    href="https://www.hsbr-apps.co/" target="_blank">HSBR-Apps</a>.</strong>
+            <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> <a href="https://www.hsbr-apps.co/"
+                    target="_blank">HSBR-Apps</a>.</strong>
             All rights reserved.
         </div>
 

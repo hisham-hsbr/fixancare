@@ -126,6 +126,9 @@
                                                 @can('Mobile Service Edit')
                                                     <th>Edit</th>
                                                 @endcan
+                                                @can('Mobile Service PDF')
+                                                    <th>PDF</th>
+                                                @endcan
                                                 @can('Mobile Service Delete')
                                                     <th>Delete</th>
                                                 @endcan
@@ -214,6 +217,9 @@
                                                 @can('Mobile Service Edit')
                                                     <th>Edit</th>
                                                 @endcan
+                                                @can('Mobile Service PDF')
+                                                    <th>PDF</th>
+                                                @endcan
                                                 @can('Mobile Service Delete')
                                                     <th>Delete</th>
                                                 @endcan
@@ -240,6 +246,7 @@
 
 
     <x-message.message />
+    <x-message.table-update />
 
     <x-links.footer-links-dataTable />
 
@@ -338,7 +345,8 @@
                         {
                             data: 'jobType',
                             name: 'jobType',
-                            defaultContent: ''
+                            // "searchable": false,
+                            "defaultContent": ""
                         },
                     @endcan
                     @can('Mobile Service Read Work Status')
@@ -504,6 +512,13 @@
                             defaultContent: ''
                         },
                     @endcan
+                    @can('Mobile Service PDF')
+                        {
+                            data: 'pdfLink',
+                            name: 'pdfLink',
+                            defaultContent: ''
+                        },
+                    @endcan
                     @can('Mobile Service Delete')
                         {
                             data: 'deleteLink',
@@ -515,12 +530,6 @@
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
-    </script>
-    <script>
-        function Refresh() {
-            $('#example1').DataTable().ajax.reload();
-            toastr.success("Refreshed");
-        }
     </script>
 
 @endsection

@@ -15,15 +15,22 @@ class Permission extends Model
 
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults()
-        ->logOnly(['name','parent','status','timeZone.time_zone'])
-        // Chain fluent methods for configuration options
+        $run_seeder_disable=env('RUN_SEEDER_DISABLE');
 
-        ->setDescriptionForEvent(fn(string $eventName) => "This Permission has been {$eventName}")
-        ->useLogName('Permission')
-        // ->dontLogIfAttributesChangedOnly(['email']) //By default the updated_at attribute is not ignored and will trigger an activity being logged
-        ->logOnlyDirty();
-        // ->dontSubmitEmptyLogs(); //Prevent save logs items that have no changed attribute
+        if($run_seeder_disable=='Y'){
+            return LogOptions::defaults()
+            ->logOnly(['name','parent','status','timeZone.time_zone','created_at','updated_at'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This Permission has been {$eventName}")
+            ->useLogName('Permission')
+            ->logOnlyDirty();
+        }
+        if($run_seeder_disable=='N'){
+            return LogOptions::defaults()
+            ->logOnly(['name'])
+            ->setDescriptionForEvent(fn(string $eventName) => "This Permission has been {$eventName}")
+            ->useLogName('Permission')
+            ->logOnlyDirty();
+        }
     }
 
      protected $fillable = [

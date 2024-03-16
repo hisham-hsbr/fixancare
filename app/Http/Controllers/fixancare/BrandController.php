@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\fixancare;
 
-use App\Models\Fixancare\Brand;
+use App\Imports\BrandImport;
 use Illuminate\Http\Request;
+use App\Models\Fixancare\Brand;
+use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Yajra\Datatables\Datatables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BrandController extends Controller
 {
@@ -19,13 +21,19 @@ class BrandController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        // $this->middleware('permission:Brand Read', ['only' => ['index']]);
+        $this->middleware('permission:Brand Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Brand Edit', ['only' => ['Edit','Update']]);
+        $this->middleware('permission:Brand Delete', ['only' => ['destroy']]);
 
     }
 
     public function index()
     {
         $brands = Brand::all();
-        return view('back_end.fixancare.brands.index',compact('brands'))->with('i');
+        $createdByUsers = $brands->sortBy('createdBy')->pluck('createdBy')->unique();
+        $updatedByUsers = $brands->sortBy('updatedBy')->pluck('updatedBy')->unique();
+        return view('back_end.fixancare.brands.index',compact('brands','createdByUsers','updatedByUsers'))->with('i');
     }
 
     public function brandGet()
@@ -81,7 +89,7 @@ class BrandController extends Controller
         ->addColumn('deleteLink', function (Brand $brand) {
            $CSRFToken = "csrf_field()";
             $deleteLink ='
-                        <button class="btn btn-link delete-Brand" data-Brand_id="'.$brand->id.'" type="submit"><i
+                        <button class="btn btn-link delete-brand" data-brand_id="'.$brand->id.'" type="submit"><i
                                 class="fa-solid fa-trash-can text-danger"></i>
                         </button>';
                return $deleteLink;
@@ -103,6 +111,34 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+     public function brandImport()
+     {
+         return view('back_end.fixancare.brands.import');
+     }
+
+     public function brandDownload()
+     {
+         $path=public_path('downloads/sample_excels/brands_import_sample.xlsx');
+         return response()->download($path);
+     }
+
+     public function brandUpload(Request $request)
+     {
+        $request->validate([
+            'data'=>'required'
+        ]);
+
+        try {
+            Excel::import(new BrandImport,$request->file('data'));
+            return redirect()->route('brands.index')
+            ->with('message_store', 'Brands Import Successfully');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+             $failures = $e->failures();
+             return redirect()->back()->with('import_errors',$failures);
+        }
+     }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -183,8 +219,12 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand)
+    public function destroy($id)
     {
-        //
+        $brand  = Brand::findOrFail($id);
+        $brand->delete();
+
+        return redirect()->route('brands.index')->with('message_update', 'Brand Deleted Successfully');
+
     }
 }

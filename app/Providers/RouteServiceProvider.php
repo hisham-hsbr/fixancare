@@ -27,8 +27,11 @@ class RouteServiceProvider extends ServiceProvider
     {
 
         //for view sharing from DB
-        require __DIR__.'/view_share.php';
+        $run_seeder_disable=env('RUN_SEEDER_DISABLE');
 
+        if($run_seeder_disable=='Y'){
+            require __DIR__.'/view_share.php';
+        }
 
 
         RateLimiter::for('api', function (Request $request) {

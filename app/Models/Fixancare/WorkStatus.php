@@ -6,15 +6,43 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class WorkStatus extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
-     protected $fillable = [
+    protected $fillable = [
+        'code',
         'name',
-        'status'
+        'status',
+        'created_by',
+        'updated_by',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        $useLogName='Work Status';
+        $run_seeder_disable=env('RUN_SEEDER_DISABLE');
+
+        if($run_seeder_disable=='Y'){
+
+            return LogOptions::defaults()
+            ->logOnly(['code','name','local_name','description','status','created_at','updated_at'])
+            ->setDescriptionForEvent(fn(string $eventName) => "$useLogName {$eventName}")
+            ->useLogName($useLogName)
+            ->logOnlyDirty();
+        }
+        if($run_seeder_disable=='N'){
+
+            return LogOptions::defaults()
+            ->logOnly(['code','name'])
+            ->setDescriptionForEvent(fn(string $eventName) => "$useLogName {$eventName}")
+            ->useLogName($useLogName)
+            ->logOnlyDirty();
+        }
+    }
 
     public function getCreatedAtAttribute()
     {

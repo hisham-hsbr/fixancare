@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\fixancare;
 
-use App\Models\fixancare\Image;
+use App\Models\Fixancare\Image;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;

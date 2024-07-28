@@ -244,7 +244,11 @@
                             </x-sidebar.sidebar-nav-multi-level>
                         @endcanany
 
-
+                        @can('Backup Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Backup" href="{{ route('backup') }}" menu_open=""
+                                active="{{ request()->is('admin/fixancare/backup*') ? 'active' : '' }}"
+                                menu_icon="fa-solid fa-database" drop_icon="" />
+                        @endcan
 
 
                     </x-sidebar.sidebar-nav-level>

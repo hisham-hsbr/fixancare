@@ -21,8 +21,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/download', 'mobileServicesDownload')->name('download');
     });
 
-     //image
-     Route::controller('Fixancare\ImageController')->prefix('/admin/fixancare/images')->name('images.')->group(function () {
+    //image
+    Route::controller('Fixancare\ImageController')->prefix('/admin/fixancare/images')->name('images.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::get('/edit/{id}', 'edit')->name('edit');
@@ -133,7 +133,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/download', 'brandDownload')->name('download');
     });
 
-
-
-
+    Route::get('/admin/fixancare/backup', 'BackendDashboardController@backup')->name('backup');
+    Route::get('/admin/fixancare/backup/download/{filename}', 'BackendDashboardController@backupDownload')->name('backup.download');
+    //     Route::get('/files', [FileController::class, 'index']);
+    // Route::get('/files/download/{filename}', [FileController::class, 'download'])->name('files.download');
 });

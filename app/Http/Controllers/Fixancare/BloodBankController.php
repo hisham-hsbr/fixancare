@@ -26,7 +26,7 @@ class BloodBankController extends Controller
     public function index()
     {
         $blood_banks = BloodBank::all();
-        return view('front_end.blood_bank.index',compact('blood_banks'));
+        return view('front_end.blood_bank.index', compact('blood_banks'));
     }
 
     /**
@@ -36,9 +36,9 @@ class BloodBankController extends Controller
     {
         $bloods = Blood::where('status', 1)->get();
         $country_list = DB::table('country_state_district_cities')
-                        ->groupBy('country')
-                        ->where('status', 1)->get();
-        return view('front_end.blood_bank.create',compact('bloods','country_list'));
+            ->groupBy('country')
+            ->where('status', 1)->get();
+        return view('front_end.blood_bank.create', compact('bloods', 'country_list'));
     }
 
     function csdcsGet(Request $request)
@@ -47,13 +47,12 @@ class BloodBankController extends Controller
         $value = $request->get('value');
         $dependent = $request->get('dependent');
         $data = DB::table('country_state_district_cities')
-        ->where($select, $value)
-        ->groupBy($dependent)
-        ->get();
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-        foreach($data as $row)
-        {
-        $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+            ->where($select, $value)
+            ->groupBy($dependent)
+            ->get();
+        $output = '<option value="">Select ' . ucfirst($dependent) . '</option>';
+        foreach ($data as $row) {
+            $output .= '<option value="' . $row->$dependent . '">' . $row->$dependent . '</option>';
         }
         echo $output;
     }
@@ -63,7 +62,7 @@ class BloodBankController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

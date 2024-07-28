@@ -9,11 +9,11 @@ Route::get('/test', function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
 
 
-require __DIR__.'/back_end/back_end.php';
-require __DIR__.'/front_end/front_end.php';
+require __DIR__ . '/back_end/back_end.php';
+require __DIR__ . '/front_end/front_end.php';
